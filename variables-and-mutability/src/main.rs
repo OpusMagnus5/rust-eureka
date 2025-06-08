@@ -19,4 +19,8 @@ fn main() {
     // jeśli zadeklarujemy o takiej samej nazwie w nested scope to tworzymy tak naprawdę nową zmienną dostępną tylko w tym scope
     let grams_of_protein: &str = "100.345";
     let grams_of_protein: f64 = 100.345;
+    
+    // stałe mogą być deklarowane w dowolnym miejscu w kodzie, nie tak jak w przypadku zmiennych tylko w bloku funkcji
+    // stałe nie mogą się zmieniać i nie można użyć słowa mut, musimy explicit zadeklarować typ stałej
+    const TAX_RATE: f64 = 3.14;
 }
