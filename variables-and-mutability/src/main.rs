@@ -15,7 +15,8 @@ fn main() {
     let mut gym_reps_mut: i32 = 10;
     gym_reps_mut = 15; // przy użyciu mut deklarujemy zmienną mutable, ale nie można zmienić typu
     
-    // variable shadowing, pozwala również na re-deklarowanie typu zmiennej
+    // variable shadowing, pozwala również na re-deklarowanie typu zmiennej w tym samym scope,
+    // jeśli zadeklarujemy o takiej samej nazwie w nested scope to tworzymy tak naprawdę nową zmienną dostępną tylko w tym scope
     let grams_of_protein: &str = "100.345";
     let grams_of_protein: f64 = 100.345;
 }
