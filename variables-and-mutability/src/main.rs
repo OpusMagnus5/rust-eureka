@@ -13,5 +13,9 @@ fn main() {
     // gym_reps = 15 // error - zmienne domyślnie są immutable
     
     let mut gym_reps_mut: i32 = 10;
-    gym_reps_mut = 15; // przy użyciu mut deklarujemy zmienną mutable
+    gym_reps_mut = 15; // przy użyciu mut deklarujemy zmienną mutable, ale nie można zmienić typu
+    
+    // variable shadowing, pozwala również na re-deklarowanie typu zmiennej
+    let grams_of_protein: &str = "100.345";
+    let grams_of_protein: f64 = 100.345;
 }
