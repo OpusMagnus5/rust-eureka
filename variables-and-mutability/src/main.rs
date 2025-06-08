@@ -23,4 +23,10 @@ fn main() {
     // stałe mogą być deklarowane w dowolnym miejscu w kodzie, nie tak jak w przypadku zmiennych tylko w bloku funkcji
     // stałe nie mogą się zmieniać i nie można użyć słowa mut, musimy explicit zadeklarować typ stałej
     const TAX_RATE: f64 = 3.14;
+
+    // type alias
+    let mile_race_length: Meters = 1600;
 }
+
+// type alias, alias dla istniejącego typu, aby nadać dodatkowo kontekst
+type Meters = i32;
