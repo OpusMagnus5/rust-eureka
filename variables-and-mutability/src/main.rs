@@ -8,4 +8,10 @@ fn main() {
     println!("This year, my garden has {} apples.", apples_in_garden);
     println!("This year, my garden has {apples_in_garden} apples and {oranges} oranges.");
     println!("This year, my garden has {1} apples and {0} oranges.", oranges, apples_in_garden);
+    
+    let gym_reps: i32 = 10;
+    // gym_reps = 15 // error - zmienne domyślnie są immutable
+    
+    let mut gym_reps_mut: i32 = 10;
+    gym_reps_mut = 15; // przy użyciu mut deklarujemy zmienną mutable
 }
