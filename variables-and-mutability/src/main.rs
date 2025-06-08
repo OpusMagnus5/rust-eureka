@@ -7,4 +7,5 @@ fn main() {
     // string interpolation
     println!("This year, my garden has {} apples.", apples_in_garden);
     println!("This year, my garden has {apples_in_garden} apples and {oranges} oranges.");
+    println!("This year, my garden has {1} apples and {0} oranges.", oranges, apples_in_garden);
 }
