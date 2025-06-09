@@ -1,0 +1,21 @@
+/*
+    Typy skalarne to takie, które mają tylko jedną wartość w sobie
+    Signed zaczyna się od i, a Unsigned od u
+*/
+fn main() {
+    // można używać zapisu z _ dla liczb
+    let eight_bit: u8 = 255;
+    let sixteen_bit: u16 = 65_535;
+    let thirty_two_bit: u32 = 4_294_967_295;
+    let sixty_four_bit: u64 = 18_446_744_073_709_551_615;
+    let one_byte: i8 = -128;
+    let two_byte: i16 = -32_768;
+    let four_byte: i32 = -2_147_483_648;
+    let eight_byte: i64 = -9_223_372_036_854_775_808;
+    
+    // Inny sposób na deklarowanie typu po wartości zmiennej
+    let some_value = 255u8;
+    
+    // usize i isize to są aliasy dla unsigned i signed, ale wielkość bitów zależy od architektury, na jakim komputerze się uruchamia
+    let days: usize = 55;
+}
