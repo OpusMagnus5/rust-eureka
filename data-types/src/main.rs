@@ -18,4 +18,9 @@ fn main() {
     
     // usize i isize to są aliasy dla unsigned i signed, ale wielkość bitów zależy od architektury, na jakim komputerze się uruchamia
     let days: usize = 55;
+    
+    // string literal jest, wtedy gdy kompilator wie już, w trakcie jaki to będzie
+    let string_literal = "Hello, world!";
+    // raw string literal nie analizuje specjalnych znaków, tylko wstawia to, co piszemy, poprzedzamy literą r
+    let raw_string = r"C:\\MyDoc\new";
 }
