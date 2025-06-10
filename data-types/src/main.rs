@@ -41,6 +41,11 @@ fn main() {
     let product = five * six;
     let quotient = five / six;
     let remainder = five % six;
+    
+    // assignment operators
+    let mut year = 2025;
+    year = year + 1;
+    year += 1;
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
