@@ -3,7 +3,7 @@
     Signed zaczyna się od i, a Unsigned od u
 */
 fn main() {
-    // można używać zapisu z _ dla liczb
+    // można używać zapisu z _ dla liczb, dla zmiennoprzecinkowych nie ma unsigned
     let eight_bit: u8 = 255;
     let sixteen_bit: u16 = 65_535;
     let thirty_two_bit: u32 = 4_294_967_295;
@@ -23,4 +23,15 @@ fn main() {
     let string_literal = "Hello, world!";
     // raw string literal nie analizuje specjalnych znaków, tylko wstawia to, co piszemy, poprzedzamy literą r
     let raw_string = r"C:\\MyDoc\new";
+    
+    // formatowanie liczb
+    // .2 - 2 cyfry po przecinku
+    println!("The current value of pi is {eight_bit:.2}");
+    println!("The current value of pi is {:.2}", eight_bit);
+}
+
+// Metoda to funkcja, którą można wykonać na obiekcie / typie
+
+fn methods() {
+    let abs_value = 10i32.abs();
 }
