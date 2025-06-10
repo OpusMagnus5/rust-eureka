@@ -28,6 +28,19 @@ fn main() {
     // .2 - 2 cyfry po przecinku
     println!("The current value of pi is {eight_bit:.2}");
     println!("The current value of pi is {:.2}", eight_bit);
+    
+    //casting
+    let miles_away: i32 = 50;
+    let kilometers_away: i8 = miles_away as i8;
+    
+    // mathematical operations
+    let five = 5;
+    let six = 6;
+    let sum = five + six;
+    let difference = five - six;
+    let product = five * six;
+    let quotient = five / six;
+    let remainder = five % six;
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
