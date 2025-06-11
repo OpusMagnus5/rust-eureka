@@ -46,6 +46,18 @@ fn main() {
     let mut year = 2025;
     year = year + 1;
     year += 1;
+
+    // boolean
+    let is_handsome: bool = true;
+    let inverse_is_handsome = !is_handsome;
+    
+    // equality
+    let is_equal = five == six;
+    let is_not_equal = five != six;
+    
+    // logical operators
+    let is_true = is_equal && is_not_equal;
+    let is_false = is_equal || is_not_equal;
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
