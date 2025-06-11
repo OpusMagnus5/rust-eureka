@@ -50,6 +50,7 @@ fn main() {
     // boolean
     let is_handsome: bool = true;
     let inverse_is_handsome = !is_handsome;
+    five.is_positive();
     
     // equality
     let is_equal = five == six;
@@ -58,6 +59,15 @@ fn main() {
     // logical operators
     let is_true = is_equal && is_not_equal;
     let is_false = is_equal || is_not_equal;
+    
+    // character type
+    let z: char = 'z';
+    let emoij: char = '🤣';
+    emoij.is_alphabetic();
+    
+    // array nie zmienia wielkości
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
+    array.len();
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
