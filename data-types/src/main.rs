@@ -93,7 +93,11 @@ fn debug_trait() {
     let array: [i32; 5] = [1, 2, 3, 4, 5];
     println!("{:?}", array); // ? formatuje za pomocą Debug trait
     println!("{array:?}");
-    println!("{array:#?}") // #? formatuje za pomocą Debug, ale jest prettier
+    println!("{array:#?}"); // #? formatuje za pomocą Debug, ale jest prettier
+
+    // debug macro używa Debug trait do formatowania stringa i drukowania do konsoli
+    // drukuje także nazwę pliku i numer linii
+    dbg!(array); 
 }
 
 
