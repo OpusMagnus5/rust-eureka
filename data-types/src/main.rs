@@ -78,3 +78,45 @@ fn main() {
 fn methods() {
     let abs_value = 10i32.abs();
 }
+
+// Trait
+fn display_trait() {
+    // trait to kontrakt, że typ wspiera jedną lub więcej metod (type implementuje trait)
+    // Typ może implementować kilka trait.
+    // Display trait wymaga, aby typ mógł być reprezentowany przez string (user-friendly).
+    // Display trait udostępnia metodę format, jest używany przy interpolacji.
+    // Większość typów wbudowanych w Rust implementuje ten trait, ale np. bardziej złożone już nie np. array
+}
+
+fn debug_trait() {
+    // działa jak display, ale ma za zadanie reprezentować typ w postaci stringa dla debugu
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
+    println!("{:?}", array); // ? formatuje za pomocą Debug trait
+    println!("{array:?}");
+    println!("{array:#?}") // #? formatuje za pomocą Debug, ale jest prettier
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
