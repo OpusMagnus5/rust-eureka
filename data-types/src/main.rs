@@ -67,7 +67,10 @@ fn main() {
     
     // array nie zmienia wielkości
     let array: [i32; 5] = [1, 2, 3, 4, 5];
-    array.len();
+    array[0];
+    // nadal nie może zmieniać wielkości, ale można zmieniać wartości w tablicy
+    let mut mut_array: [i32; 5] = [1, 2, 3, 4, 5];
+    mut_array[0] = 10;
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
