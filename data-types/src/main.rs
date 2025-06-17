@@ -1,10 +1,10 @@
+use std::ops::{Range, RangeInclusive};
 /*
     Typy skalarne to takie, które mają tylko jedną wartość w sobie
     Signed zaczyna się od i, a Unsigned od u
 */
-use std::ops::{Range, RangeInclusive};
 
-fn main() {
+fn main1() {
     // można używać zapisu z _ dla liczb, dla zmiennoprzecinkowych nie ma unsigned
     let eight_bit: u8 = 255;
     let sixteen_bit: u16 = 65_535;
@@ -36,7 +36,7 @@ fn main() {
     let kilometers_away: i8 = miles_away as i8;
     
     // mathematical operations
-    let five = 5;
+    let five: i8 = 5;
     let six = 6;
     let sum = five + six;
     let difference = five - six;
@@ -81,7 +81,7 @@ fn main() {
     println!("Name: {}, Age: {}, Position: {}", name, age, position);
     
     //range, górna granica jest exclusive
-    let month_days: Range<i32> = 1..31;
+    let month_days: Range<i32> = 1..31; // potrzebujemy inport typu std::ops::Range
     let month_days_inclusive: RangeInclusive<i32> = 1..=31; // górna granica jest inclusive
     let letters: RangeInclusive<char> = 'a'..='z';
     println!("{month_days:?}");
@@ -116,6 +116,33 @@ fn debug_trait() {
     // debug macro używa Debug trait do formatowania stringa i drukowania do konsoli
     // drukuje także nazwę pliku i numer linii
     dbg!(array); 
+}
+
+fn main() {
+    let variable: i32 = 1_337;
+    println!("{variable}");
+    let smaller_variable: i16 = variable as i16;
+    println!("{smaller_variable}");
+    
+    let float: f64 = 1.337;
+    println!("{float}");
+    println!("{float:.3}");
+    
+    let with_milk: bool = true;
+    println!("{with_milk}");
+    let with_sugar: bool = false;
+    println!("{with_sugar}");
+    
+    let is_my_type_of_coffee: bool = with_milk && with_sugar;
+    let is_acceptable_coffee: bool = with_milk || with_sugar;
+    
+    let array: [i32; 4] = [1, 2, 3, 4];
+    println!("{array:?}");
+    println!("{array:#?}");
+    dbg!(array);
+    
+    let tuple: (i32, f64, bool, [i32; 4]) = (variable, float, with_milk, array);
+    println!("{tuple:?}")
 }
 
 
