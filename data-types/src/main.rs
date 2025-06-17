@@ -71,6 +71,12 @@ fn main() {
     // nadal nie może zmieniać wielkości, ale można zmieniać wartości w tablicy
     let mut mut_array: [i32; 5] = [1, 2, 3, 4, 5];
     mut_array[0] = 10;
+
+    // tuple, działa podobnie do tablicy, ale może zawierać różne typy
+    let employee: (&str, i32, &str) = ("Molly", 32, "Marketing");
+    let age = employee.1;
+    let (name, age, position): (&str, i32, &str) = employee;
+    println!("Name: {}, Age: {}, Position: {}", name, age, position);
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
