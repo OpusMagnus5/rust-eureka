@@ -2,6 +2,8 @@
     Typy skalarne to takie, które mają tylko jedną wartość w sobie
     Signed zaczyna się od i, a Unsigned od u
 */
+use std::ops::{Range, RangeInclusive};
+
 fn main() {
     // można używać zapisu z _ dla liczb, dla zmiennoprzecinkowych nie ma unsigned
     let eight_bit: u8 = 255;
@@ -77,6 +79,16 @@ fn main() {
     let age = employee.1;
     let (name, age, position): (&str, i32, &str) = employee;
     println!("Name: {}, Age: {}, Position: {}", name, age, position);
+    
+    //range, górna granica jest exclusive
+    let month_days: Range<i32> = 1..31;
+    let month_days_inclusive: RangeInclusive<i32> = 1..=31; // górna granica jest inclusive
+    let letters: RangeInclusive<char> = 'a'..='z';
+    println!("{month_days:?}");
+    
+    for day in month_days {
+        println!("{day}");
+    }
 }
 
 // Metoda to funkcja, którą można wykonać na obiekcie / typie
