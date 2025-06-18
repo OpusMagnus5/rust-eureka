@@ -16,3 +16,22 @@ fn square(number: i32) -> i32 {
 fn implicit_square(number: i32) -> i32 {
     number * number
 }
+
+// unit jest to pusty tuple bez wartości
+fn mystery() {
+    
+}
+
+// explicit 
+fn mystery_2() -> () {
+}
+
+fn blocks() {
+    let multiplier: i32 = 3;
+
+    //scope, izoluje zasięg
+    let calculation: i32 = {
+        let value: i32 = 5 + 4;
+        value * multiplier //działa podobnie jak funkcja i zwraca ostatni wynik linii, ale nie za pomocą return
+    };
+}
