@@ -36,7 +36,23 @@ fn main() {
         _ => unreachable!(), // to jest makro które symbolizuje, że ten kod jest nieosiągalny
     };
     
-    
+    // loop - pętla bez końca
+    let mut seconds: i32 = 0;
+    loop {
+        if seconds <= 0 { 
+            println!("Blastoff!");
+            break; 
+        }
+        
+        if seconds % 2 == 0 { 
+            println!("Skipping 3 seconds...");
+            seconds -=3;
+            continue;
+        }
+        
+        println!("{seconds} seconds to blastoff...");
+        seconds -= 1;
+    }
 }
 
 // przypisywanie wartości z ifa
@@ -44,3 +60,25 @@ fn even_or_odd(number: i32) {
     let result: &str = if number % 2 == 0 { "even" } else { "odd" }; // ternary operation nie istnieje, jedynie takie coś
     println!("The number is {result}");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
