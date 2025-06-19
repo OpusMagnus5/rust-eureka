@@ -59,12 +59,24 @@ fn main() {
         println!("{seconds} seconds to blastoff...");
         seconds -= 1;
     }
+    
+    countdown(5);
 }
 
 // przypisywanie wartości z ifa
 fn even_or_odd(number: i32) {
     let result: &str = if number % 2 == 0 { "even" } else { "odd" }; // ternary operation nie istnieje, jedynie takie coś
     println!("The number is {result}");
+}
+
+// recursion
+fn countdown(seconds: i32) {
+    if seconds == 0 { 
+        println!("Blastoff!");
+    } else {
+        println!("{seconds} seconds to blastoff...");
+        countdown(seconds - 1);    
+    }
 }
 
 
