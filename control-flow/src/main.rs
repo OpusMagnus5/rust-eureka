@@ -11,6 +11,32 @@ fn main() {
     }
     
     even_or_odd(12);
+    
+    //match statement jest podobny do switch
+    let evaluation: bool = true;
+    
+    match evaluation { 
+        true => { println!("Yes"); }
+        false => { println!("No"); }
+    }
+    
+    // zwracanie wartości z match i krótszy zapis
+    let result = match season {
+        "summer" => println!("School's out!"),
+        "winter" => println!("Brr's out!"),
+        "autumn" | "spring" => println!("Lots of rain"), // przypisanie kilku wartości do jednej ścieżki
+        _ => println!("Invalid season"), // _ działa jak default w java
+    };
+
+    // pattern match
+    let number: i32 = 8;
+    let number_result = match number {
+        value if value % 2 == 0 => println!("{value} is an even number"),
+        x if x % 2 != 0 => println!("{number} is an odd number"),
+        _ => unreachable!(), // to jest makro które symbolizuje, że ten kod jest nieosiągalny
+    };
+    
+    
 }
 
 // przypisywanie wartości z ifa
