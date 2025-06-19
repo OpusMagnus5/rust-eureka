@@ -1,4 +1,6 @@
-fn main() {
+use std::ops::RangeInclusive;
+
+fn main2() {
     let season: &str = "summer";
 
     // if statement
@@ -77,6 +79,55 @@ fn countdown(seconds: i32) {
         println!("{seconds} seconds to blastoff...");
         countdown(seconds - 1);    
     }
+}
+
+fn main() {
+    println!("Factorial of 5 = {}", factorial(5));
+    println!("Factorial of 4 = {}", factorial(4));
+
+    println!("Factorial of 5 = {}", recursion_factorial(5));
+    println!("Factorial of 4 = {}", recursion_factorial(4));
+}
+
+fn color_to_number(color: &str) -> i32 {
+    if "red" == color {
+        1
+    } else if "green" == color {
+        2
+    } else if "blue" == color { 
+        3
+    } else {
+        0
+    }
+}
+
+fn color_to_number_match(color: &str) -> i32 {
+    match color { 
+        "red" => 1,
+        "green" => 2,
+        "blue" => 3,
+        _ => 0,
+    }
+}
+
+fn factorial(number: i32) -> i32 {
+    if number == 1 { return 1 };
+    
+    let numbers: RangeInclusive<i32> = 2..=number;
+    let mut factorial: i32 = 1;
+    for numb in numbers {
+        factorial *= numb
+    }
+    
+    factorial
+}
+
+fn recursion_factorial(number: i32) -> i32 {
+    if number == 1 { 
+        return number
+    }
+    
+    number * recursion_factorial(number - 1)
 }
 
 
