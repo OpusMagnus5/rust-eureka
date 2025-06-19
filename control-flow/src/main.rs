@@ -53,6 +53,12 @@ fn main() {
         println!("{seconds} seconds to blastoff...");
         seconds -= 1;
     }
+    
+    // while loop
+    while seconds > 0 {
+        println!("{seconds} seconds to blastoff...");
+        seconds -= 1;
+    }
 }
 
 // przypisywanie wartości z ifa
