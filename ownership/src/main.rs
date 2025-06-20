@@ -116,6 +116,30 @@ fn clone_method() {
     println!("{person}") // OK
 }
 
+fn references_and_borrowing() {
+    /*
+     Referencje pozwalają używać wartości bez konieczności przenoszenia ownera.
+     Właściwość tę nazywamy - borrowing. 
+     Deklarujemy że pożyczamy wartość tworząc do niej referencje ale zwrócimy ją gdy skończymy
+     jej używać.
+    */
+    
+    let my_stack_value = 2;
+    let my_integer_reference: &i32 = &my_stack_value; // & - za pomocą tego operatora pożyczamy
+    
+    let my_heap_value = String::from("Toyota");
+    let my_heap_reference: &String = &my_heap_value;
+    
+    /*
+     Na koniec działania scope, value jest ownerem wartości która zostanie zwolniona, a
+     reference jest ownerem tylko referencji i która zostanie wyczyszczona.
+     
+     Referencja jest jednym z typów wskaźników (Pointers), wskazuje na valid value jeśli chodzi o
+     istnienie i życie tej wartości.
+     Sam wskaźnik nie posiada takiej gwarancji.
+    */
+}
+
 
 
 
