@@ -31,6 +31,8 @@ fn test() {
     let is_handsome: bool = true;
 }
 
+// =================================================================================================
+
 fn copy_trait() {
     /*
      Typy które obsługują copy trait mogą zostać w pełni zduplikowane. Wszystkie typy o znanej
@@ -44,6 +46,8 @@ fn copy_trait() {
     let time = 2025;
     let year = time;
 }
+
+// =================================================================================================
 
 fn string_type() {
     /*
@@ -78,6 +82,8 @@ fn string_type() {
     name.push_str(" Bodzioch");
 }
 
+// =================================================================================================
+
 fn move_ownership() {
     /*
      move - służy do zmiany ownera na innego
@@ -93,6 +99,8 @@ fn move_ownership() {
     // println!("{person}") ERROR
 }
 
+// =================================================================================================
+
 fn drop_function() {
     let person = String::from("Damian");
     /*
@@ -102,6 +110,8 @@ fn drop_function() {
 
     drop(person); // możemy wywołać ją ręcznie i zmienna staje się INVALID
 }
+
+// =================================================================================================
 
 fn clone_method() {
     /*
@@ -115,6 +125,8 @@ fn clone_method() {
     let genius = person.clone(); // Duplikacja danych
     println!("{person}") // OK
 }
+
+// =================================================================================================
 
 fn references_and_borrowing() {
     /*
@@ -140,6 +152,8 @@ fn references_and_borrowing() {
     */
 }
 
+// =================================================================================================
+
 fn dereference() {
     /*
      dereference - służy do uzyskania wartości na którą wskazuje referencja.
@@ -158,6 +172,8 @@ fn dereference() {
     let ice_cream: &str = "Cookies and Cream";
 }
 
+// =================================================================================================
+
 fn copy_references() {
     /*
      Rust robi kopię referencji więc nie zmiany ownera, ponieważ są to referencje są zapisane na stacku.
@@ -166,6 +182,8 @@ fn copy_references() {
     let dessert = ice_cream;
     println!("{ice_cream}"); // OK
 }
+
+// =================================================================================================
 
 fn ownership_and_function_parameters() {
     let apples = 6;
@@ -191,6 +209,8 @@ fn print_my_string(value: String) {
     println!("You value is {value}");
 }
 
+// =================================================================================================
+
 fn mutable_parameters() {
     let burger = String::from("Burger");
     add_fries(burger);
@@ -200,6 +220,8 @@ fn add_fries(mut meal: String) {
     // meal.push_str(" and Fries"); not work with immutable parameter
     meal.push_str(" and Fries");
 }
+
+// =================================================================================================
 
 fn return_values() {
     /*
@@ -240,6 +262,8 @@ fn add_sugar_2(mut meal: String) -> String {
     meal.push_str("Add sugar");
     meal
 }
+
+// =================================================================================================
 
 /*
 Declare a `is_concert` variable set to a boolean.
@@ -306,6 +330,8 @@ fn eat_meal(mut meal: String) {
     meal.clear()
 }
 
+// =================================================================================================
+
 // Drugi sposób na przekazywanie parametrów i ich mutacje
 fn immutable_and_mutable_references() {
     let mut current_meal = String::from("Meal"); // sama wartość równiez musi być mutowalna
@@ -327,6 +353,19 @@ fn add_flour_3(meal: &mut String) {
      jak na wartości
     */
     meal.push_str("Add flour");
+}
+
+// =================================================================================================
+
+fn multiple_immutable_references() {
+    /*
+     Rust pozwala na borrow (tworzenie immutable referencji) wiele razy, bo nie niesie ryzyka
+     że adres w pamięci do wartości się zmieni.
+    */
+    let car = String::from("Red");
+    let ref1 = &car;
+    let ref2 = &car;
+    println!("{ref1} and {ref2}"); // OK
 }
 
 
