@@ -158,6 +158,15 @@ fn dereference() {
     let ice_cream: &str = "Cookies and Cream";
 }
 
+fn copy_references() {
+    /*
+     Rust robi kopię referencji więc nie zmiany ownera, ponieważ są to referencje są zapisane na stacku.
+    */
+    let ice_cream: &str = "Cookies and Cream";
+    let dessert = ice_cream;
+    println!("{ice_cream}"); // OK
+}
+
 
 
 
