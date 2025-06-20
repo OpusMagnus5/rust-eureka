@@ -78,6 +78,21 @@ fn string_type() {
     name.push_str(" Bodzioch");
 }
 
+fn move_ownership() {
+    /*
+     move - służy do zmiany ownera na innego
+     
+     W przypadku poniżej String nie wspiera copy trait i dlatego Rust kopiuje jedynie dane z stacku
+     czyli referencji, długość i pojemność. Zmienia się także OWNER z person na genius i to on jest
+     odpowiedzialny teraz za zwolnienie pamięci. A także sprawia to że zmienna person staje się 
+     INVALID i nie możemy jej użyć po deklaracji genius.
+    */
+    let person: String = String::from("Damian");
+    println!("{person}"); // OK
+    let genius: String = person;
+    // println!("{person}") ERROR
+}
+
 
 
 
