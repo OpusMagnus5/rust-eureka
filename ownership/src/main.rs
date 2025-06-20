@@ -338,7 +338,7 @@ fn immutable_and_mutable_references() {
     add_flour_3(&mut current_meal); // musimy też przekazać w postaci mutowalnej
     // przekazujemy referencje a nie wartość, aby nie przekazywać ownera wartości
     show_my_meal(&current_meal);
-    
+
 }
 
 // read only referencja do wartości, tylko mutable mogą zmieniać wartość
@@ -349,7 +349,7 @@ fn show_my_meal(meal: &String) {
 // mutable referencja &mut
 fn add_flour_3(meal: &mut String) {
     /*
-     zmieniamy wartość, nieważne czy to referencja czy wartość możemy działać na zmiennej 
+     zmieniamy wartość, nieważne czy to referencja czy wartość możemy działać na zmiennej
      jak na wartości
     */
     meal.push_str("Add flour");
@@ -411,11 +411,34 @@ fn dangling_reference() {
 
 fn create_city() /* -> &String */ {
     /*
-      city zostanie zwolniona po zakończeniu funkcji więc nie możemy zwrócić referencji 
-      do nieistniejącej już wartości w pamięci  
+      city zostanie zwolniona po zakończeniu funkcji więc nie możemy zwrócić referencji
+      do nieistniejącej już wartości w pamięci
     */
     let city = String::from("New York");
     //&city ERROR
+}
+
+// =================================================================================================
+
+fn ownership_with_arrays_and_tuples() {
+    /*
+     registrations odpowiada za wyczyszczenie wartości jako tablicy
+     a tablica jest ownerem jej wewnętrznych wartości
+    */
+    let registration = [true, false, true];
+    /*
+     bool wspiera copy trait więc Rust robi pełną kopię
+    */
+    let first: bool = registration[0];
+    println!("{first} and {registration:?}"); // OK
+    
+    /*
+     Tutaj w gre wchodzi borrowing, ta sytuacja jest nieprawidłowa ponieważ zarówno tablica jest właścicielem
+     swoich wartości jak i first dlatego nie może tak być
+    */
+    let languages = [String::from("Rust"), String::from("JavaScript")];
+    // let first = languages[0]; // ERROR
+    let first = &languages[0]; // OK
 }
 
 
