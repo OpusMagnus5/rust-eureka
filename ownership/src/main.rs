@@ -24,7 +24,7 @@
 
 
 
-fn test() {
+fn init() {
     // age jest ownerem value 33 i jest odpowiedzialny za zwolnienie pamięci po wyjściu z bloku
     // najpierw jest czyszczony is_handsome, a potem age zgodnie z LIFO
     let age: i32 = 33; 
@@ -295,7 +295,7 @@ called. How can we continue to have access to the String in
 the `main` function? Print out the (empty) String.
 */
 
-fn main() {
+fn test() {
     // brak przeniesienia ownera, kopia wartości
     let is_concert = true;
     let is_event = is_concert;
@@ -431,7 +431,7 @@ fn ownership_with_arrays_and_tuples() {
     */
     let first: bool = registration[0];
     println!("{first} and {registration:?}"); // OK
-    
+
     /*
      Tutaj w gre wchodzi borrowing, ta sytuacja jest nieprawidłowa ponieważ zarówno tablica jest właścicielem
      swoich wartości jak i first dlatego nie może tak być
@@ -439,6 +439,74 @@ fn ownership_with_arrays_and_tuples() {
     let languages = [String::from("Rust"), String::from("JavaScript")];
     // let first = languages[0]; // ERROR
     let first = &languages[0]; // OK
+}
+
+/*
+Let's model a road trip!
+ 
+Define a `start_trip` function that creates and returns
+a String of "The plan is..."
+ 
+Invoke the `start_trip` function in `main` and save its
+return value to a `trip` variable.
+ 
+We want to pass the String to three separate functions
+that will mutate the String without transferring ownership.
+ 
+Define a `visit_philadelphia` function that concatenates
+the text "Philadephia" to the end of the String. Invoke
+the function in `main`. Then, invoke `push_str` on the String
+to concatenate the content " and " to the end. Mak sure to
+include the spaces.
+ 
+Define a `visit_new_york` function that concatenates the
+text "New York" to the end of the String. Invoke the function
+in `main`. Repeat the previous logic to concatenate " and "
+to the end of the String.
+ 
+Define a `visit_boston` function that concatenates the
+text "Boston." to the end of the String. Invoke the function
+in `main`. Concatenate a period to the end of the
+String/sentence.
+ 
+Define a `show_itinerary` function that will print out
+the final version of the String. Find a way to do so
+without transferring ownership.
+ 
+Invoke `show_itinerary`. The final output should be:
+ 
+"The plan is...Philadelphia and New York and Boston."
+*/
+
+fn main() {
+    let mut trip: String = start_trip();
+    visit_philadelphia(&mut trip);
+    trip.push_str(" and ");
+    visit_new_york(&mut trip);
+    trip.push_str(" and ");
+    visit_boston(&mut trip);
+    trip.push_str(".");
+    show_itinerary(&trip);
+}
+
+fn start_trip() -> String {
+    String::from("The plan is...")
+}
+
+fn visit_philadelphia(text: &mut String) {
+    text.push_str("Philadephia");
+}
+
+fn visit_new_york(text: &mut String) {
+    text.push_str("New York");
+}
+
+fn visit_boston(text: &mut String) {
+    text.push_str("Boston");
+}
+
+fn show_itinerary(text: &String) {
+    println!("{text}");
 }
 
 
