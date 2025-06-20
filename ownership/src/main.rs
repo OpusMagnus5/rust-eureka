@@ -383,7 +383,23 @@ fn mutable_reference_restriction() {
 
 // =================================================================================================
 
+fn ownership_with_immutable_references() {
+    let coffee = String::from("Mocha");
+    let a = &coffee;
+    let b = a; // kopiuje referencje nie zmieniając ownera
+    println!("{a} and {b}");
+}
 
+fn ownership_with_mutable_references_() {
+    let mut coffee = String::from("Mocha");
+    let a = &mut coffee;
+    let b = a;
+    /*
+     Nie możemy pożyczać mutable references, ponieważ nie implementują Copy trait
+     oraz w myśl zasady że tylko jedna mutable reference może istnieć w tym samym czasie
+    */
+    println!("{a} and {b}");
+}
 
 
 
