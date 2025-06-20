@@ -93,6 +93,16 @@ fn move_ownership() {
     // println!("{person}") ERROR
 }
 
+fn drop_function() {
+    let person = String::from("Damian");
+    /*
+    na koniec scope przy zwalnianiu zasobów rust wywołuje funkcję drop()
+    drop nie działa na pamięć na stacku tylko na heapie
+    */
+    
+    drop(person); // możemy wywołać ją ręcznie i zmienna staje się INVALID
+}
+
 
 
 
