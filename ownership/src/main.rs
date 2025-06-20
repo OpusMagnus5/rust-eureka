@@ -103,6 +103,19 @@ fn drop_function() {
     drop(person); // możemy wywołać ją ręcznie i zmienna staje się INVALID
 }
 
+fn clone_method() {
+    /* 
+     Rust przez ownersip stara się unikać duplikacji heap danych ze względu na szybkość i 
+     optymalizacje pamięci. 
+     Ale istnieje trait Clone który pozwala na duplikowanie typów które domyślnie nie są 
+     duplikowane przez Rust o ile implementują Clone trait.
+    */
+    
+    let person = String::from("Damian");
+    let genius = person.clone(); // Duplikacja danych
+    println!("{person}") // OK
+}
+
 
 
 
