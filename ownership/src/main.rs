@@ -31,6 +31,20 @@ fn main() {
     let is_handsome: bool = true;
 }
 
+fn copy_trait() {
+    /*
+     Typy które obsługują copy trait mogą zostać w pełni zduplikowane. Wszystkie typy o znanej
+     wielkości w czasie kompilacji implementują copy trait.
+    */
+
+    /*
+     Do year zostanie przypisana niezależna kopia time. Więc mamy dwóch ownerów które odpowiadają za
+     swoje wartości
+    */
+    let time = 2025;
+    let year = time;
+}
+
 
 
 
