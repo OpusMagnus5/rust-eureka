@@ -191,6 +191,16 @@ fn print_my_string(value: String) {
     println!("You value is {value}");
 }
 
+fn mutable_parameters() {
+    let burger = String::from("Burger");
+    add_fries(burger);
+}
+
+fn add_fries(mut meal: String) {
+    // meal.push_str(" and Fries"); not work with immutable parameter
+    meal.push_str(" and Fries");
+}
+
 
 
 
