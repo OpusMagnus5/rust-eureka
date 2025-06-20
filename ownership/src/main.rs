@@ -167,6 +167,30 @@ fn copy_references() {
     println!("{ice_cream}"); // OK
 }
 
+fn ownership_and_function_parameters() {
+    let apples = 6;
+    /*
+     Tutaj nie ma zmiany ownera. Robiona jest kopia wartości ze stacka tak jak w przypadku:
+     let value = apples;
+    */
+    print_my_value(apples);
+
+    /*
+     Tutaj jest zmiana ownera. Parametr funkcji przejmuje ownera oranges.
+    */
+    let oranges: String = String::from("Oranges");
+    print_my_string(oranges);
+    // println!("{oranges}"); oranges is INVALID
+}
+
+fn print_my_value(value: i32) {
+    println!("Your value is {value}");
+}
+
+fn print_my_string(value: String) {
+    println!("You value is {value}");
+}
+
 
 
 
