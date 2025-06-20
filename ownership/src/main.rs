@@ -152,8 +152,8 @@ fn dereference() {
      robi dereference aby dostać się do wartości.
     */
     println!("{}", *my_heap_reference); // deference robimy za pomocą *
-    println!("{}", my_heap_reference); 
-    
+    println!("{}", my_heap_reference);
+
     // &str to referencja do literału w binarce a samo str to tylko read-only text z binarki
     let ice_cream: &str = "Cookies and Cream";
 }
@@ -201,6 +201,45 @@ fn add_fries(mut meal: String) {
     meal.push_str(" and Fries");
 }
 
+fn return_values() {
+    /*
+     Przekazanie ownera cake z funkcji bake_cake do cake w tej funkcji.
+    */
+    let cake = bake_cake();
+    println!("{cake}");
+
+    let current_meal = String::from("Meal");
+    add_flour(current_meal);
+    // add_sugar(current_meal); Error - owner został zmieniony po przekazaniu do funkcji
+
+    // to jedne z rozwiązań takiej sytuacji ale później będzie info jak rozwiązać to referencjami
+    let mut current_meal_2 = String::from("Meal");
+    current_meal_2 = add_flour_2(current_meal_2);
+    current_meal_2 = add_sugar_2(current_meal_2);
+}
+
+fn bake_cake() -> String {
+    let cake = String::from("Chocolate Mousse");
+    cake
+}
+
+fn add_flour(mut meal: String) {
+    meal.push_str("Add flour");
+}
+
+fn add_sugar(mut meal: String) {
+    meal.push_str("Add sugar");
+}
+
+fn add_flour_2(mut meal: String) -> String {
+    meal.push_str("Add flour");
+    meal
+}
+
+fn add_sugar_2(mut meal: String) -> String {
+    meal.push_str("Add sugar");
+    meal
+}
 
 
 
