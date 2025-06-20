@@ -398,11 +398,25 @@ fn ownership_with_mutable_references_() {
      Nie możemy pożyczać mutable references, ponieważ nie implementują Copy trait
      oraz w myśl zasady że tylko jedna mutable reference może istnieć w tym samym czasie
     */
-    println!("{a} and {b}");
+    // println!("{a} and {b}"); ERROR
 }
 
+// =================================================================================================
+fn dangling_reference() {
+    /*
+     Dangling reference to wskaźnik do adresu w pamięci która została już zwolniona.
+    */
+    create_city();
+}
 
-
+fn create_city() /* -> &String */ {
+    /*
+      city zostanie zwolniona po zakończeniu funkcji więc nie możemy zwrócić referencji 
+      do nieistniejącej już wartości w pamięci  
+    */
+    let city = String::from("New York");
+    //&city ERROR
+}
 
 
 
