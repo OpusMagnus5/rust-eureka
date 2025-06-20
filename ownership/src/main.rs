@@ -45,6 +45,39 @@ fn copy_trait() {
     let year = time;
 }
 
+fn string_type() {
+    /*
+     Typ &str nie jest przechowywany ani na stacku ani na heapie, jest zapisywany w wynikowym pliku
+     executable, ponieważ jest używany tylko gdy wartość jest znana już w trakcie kompilacji.
+    */
+    let food: &str = "pasta";
+    
+    /*
+     Typ String to inny typ od &str. String jest używany gdy jest to dynamiczna wartość np. jako 
+     input od użytkownika albo z pliku. Ten typ wspiera również operacje które mutują Stringa
+     w przeciwieństwie do &str. Ten typ jest przechowywany na heapie.
+    */
+    
+    // Tworzenie pustego Stringa. Tak się odwołujemy do metod w jakimś namespace.
+    let text: String = String::new();
+    // Tworzenie Stringa z literału ("KitKat"), literał jest przechowywany w binarce
+    let candy: String = String::from("KitKat");
+    // text i candy są ownerami i są odpowiedzialne za zwolnienie pamięci
+    
+    /*
+     Taki string zapisywany jest zarówno na heapie jak i na stacku.
+     Na stacku zapisujemy referencje do heapu gdzie jest przechywana wartość, wielkość (length) Stringa w 
+     bajtach oraz pojemność miejsca w którym został zapisany (capacity) w bajtach.
+     Na heapie jest zapisywana tylko wartość.
+    */
+    let mut name = String::from("Damian");
+    
+    /*
+     Jeśli capacity było wystarczające String zostaje w tym samym miejscu na heapie.
+    */
+    name.push_str(" Bodzioch");
+}
+
 
 
 
