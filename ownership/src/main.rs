@@ -368,6 +368,21 @@ fn multiple_immutable_references() {
     println!("{ref1} and {ref2}"); // OK
 }
 
+// =================================================================================================
+
+fn mutable_reference_restriction() {
+    /*
+     Wartość może mieć tylko jedną mutable referencje w danym momencie, nieważne czy kolejna
+     będzie również mutable czy nie, to nie możemy jej stworzyć.
+    */
+    let mut car = String::from("Red");
+    let ref1 = &mut car;
+    // let ref2 = &car; ERROR - próbujemy stworzyć drugą referencję gdy jest już w tym czasie jedna mutable
+    // println!("{ref1} and {ref2}");
+}
+
+// =================================================================================================
+
 
 
 
