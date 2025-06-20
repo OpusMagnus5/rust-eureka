@@ -306,8 +306,28 @@ fn eat_meal(mut meal: String) {
     meal.clear()
 }
 
+// Drugi sposób na przekazywanie parametrów i ich mutacje
+fn immutable_and_mutable_references() {
+    let mut current_meal = String::from("Meal"); // sama wartość równiez musi być mutowalna
+    add_flour_3(&mut current_meal); // musimy też przekazać w postaci mutowalnej
+    // przekazujemy referencje a nie wartość, aby nie przekazywać ownera wartości
+    show_my_meal(&current_meal);
+    
+}
 
+// read only referencja do wartości, tylko mutable mogą zmieniać wartość
+fn show_my_meal(meal: &String) {
+    println!("Meal steps: {meal}");
+}
 
+// mutable referencja &mut
+fn add_flour_3(meal: &mut String) {
+    /*
+     zmieniamy wartość, nieważne czy to referencja czy wartość możemy działać na zmiennej 
+     jak na wartości
+    */
+    meal.push_str("Add flour");
+}
 
 
 
