@@ -45,6 +45,70 @@ fn string_slices() {
     
 }
 
+fn string_slices_as_a_function_parameters() {
+    let action_hero = String::from("Arnold Schwarzenegger");
+    /*
+     To teoretycznie nie powinno zadziałać bo przekazujemy &String, ale w Rust jesto coś takiego jak
+     'deref coercion' - kiedy Rust widzi referencje próbuje ją z dereferencjować dopóki nie dostnie
+     oryginalnej wartości. Dzieje się tak że &String może być reprezentowany przez &str ale nie na odwrót.
+    */
+    do_hero_stuff(&action_hero);
+    
+    let another_action_hero = "Sylvester Stallone";
+    do_hero_stuff(another_action_hero);
+}
+
+fn do_hero_stuff(hero_name: &str) {
+    println!("{hero_name} saves the day");
+}
+
 fn main() {
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
