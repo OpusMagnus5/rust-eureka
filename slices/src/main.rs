@@ -91,6 +91,21 @@ fn print_length(reference: &[i32]) {
     println!("{}", reference.len());
 }
 
+// ============================================================================================== //
+
+/*
+ Rust nie pozwala na mutable string slices, ale pozwala na mutable slice w tablicach.
+*/
+fn mutable_array_slices() {
+    let mut my_array: [i32; 5] = [10, 15, 20, 25, 30];
+    let my_slice = &mut my_array[2..4];
+    println!("My slice: {:?}", my_slice);
+    
+    my_slice[0] = 100; // można zmieniać wartości w slice ale w oryginalnej tabeli również się zmienią
+    println!("My slice: {:?}", my_slice);
+    println!("My array: {:?}", my_array);
+}
+
 fn main() {
     
 }
