@@ -16,7 +16,7 @@ fn define_struct() {
     }
     
     // tworzenie instancji typu, jest odpowiedzialna za cleanup pól
-    let mocha = Coffee {
+    let mut mocha = Coffee {
         name: String::from("Mocha"),
         price: 4.99,
         is_hot: true
@@ -24,8 +24,46 @@ fn define_struct() {
     
     println!("{}", mocha.name); // sięganie do pól structa
     let favourite_coffee = mocha.name; // przekazanie ownera
+    
+    /*
+     Aby móc zmieniać pola w struct trzeba zadeklarować go jako mut. Nie ma ograniczeń co do mutowalności
+     np. tylko jednego pola - albo wszystkie albo wcale.
+    */
+    mocha.name = String::from("Caramel Macchiato");
 }
 
 fn main() {
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
