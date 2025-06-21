@@ -15,12 +15,15 @@ fn define_struct() {
         is_hot: bool,
     }
     
-    // tworzenie instancji typu
+    // tworzenie instancji typu, jest odpowiedzialna za cleanup pól
     let mocha = Coffee {
         name: String::from("Mocha"),
         price: 4.99,
         is_hot: true
     };
+    
+    println!("{}", mocha.name); // sięganie do pól structa
+    let favourite_coffee = mocha.name; // przekazanie ownera
 }
 
 fn main() {
