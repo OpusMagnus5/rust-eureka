@@ -45,6 +45,8 @@ fn string_slices() {
     
 }
 
+// ============================================================================================== //
+
 fn string_slices_as_a_function_parameters() {
     let action_hero = String::from("Arnold Schwarzenegger");
     /*
@@ -60,6 +62,33 @@ fn string_slices_as_a_function_parameters() {
 
 fn do_hero_stuff(hero_name: &str) {
     println!("{hero_name} saves the day");
+}
+
+// ============================================================================================== //
+
+fn array_slices() {
+    let values: [i32; 6] = [4, 8, 15, 16, 23, 42];
+    /*
+     W porównaniu do tablicy gdzie jest zadeklarowana jej długość, slice jej nie ma zadeklarowanej
+     i może być dynamiczna.
+    */
+    let my_slice: &[i32] = &values[0..3];
+    println!("{my_slice:?}");
+}
+
+/*
+ To samo co w przypadku String coercion
+*/
+fn deref_coercion_with_array_slices() {
+    let values: [i32; 6] = [4, 8, 15, 16, 23, 42];
+    let regular_reference = &values;
+    let slice_of_three = &values[..3];
+    print_length(regular_reference);
+    print_length(slice_of_three);
+}
+
+fn print_length(reference: &[i32]) {
+    println!("{}", reference.len());
 }
 
 fn main() {
