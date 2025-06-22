@@ -263,6 +263,21 @@ fn builder_pattern() {
 
 }
 
+// ============================================================================================== //
+
+/*
+ Tuple struct to struct który przypisuje dane w kolejności a nie na podstawie nazwy pola.
+ Najczęściej używamy zamiast tuple aby nadać znaczenie tej tuple i zabezpieczyć konkretnym typem.
+*/
+
+struct ShortDuration(u32, u32);
+struct LongDuration(u32, u32);
+
+fn tuple_struct() {
+    let work_shift = ShortDuration(8, 0);
+    println!("{} hours {} minutes", work_shift.0, work_shift.1);
+}
+
 fn main() {
 
 }
