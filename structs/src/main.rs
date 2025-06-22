@@ -71,6 +71,27 @@ fn short_syntax(name: String, price: f64, is_hot: bool) -> Coffee {
 
 // ============================================================================================== //
 
+fn struct_update_syntax() {
+    let coffee: Coffee = make_coffee(String::from("Latte"), 4.99, true);
+    /*
+     Kopiowanie wartości zapisywanych na stacku jest OK
+    */
+    let caramel_macchiato = Coffee {
+        name: String::from("Caramel Macchiato"),
+        price: coffee.price,
+        is_hot: coffee.is_hot,
+    };
+
+    /*
+     spread syntax, rozrzuca pozostałe brakujące wartości structa z innego structa
+     !trzeba uważać zmienne z heap które nie są kopiowane tylko przenoszony owner!
+    */
+    let caramel_macchiato_2 = Coffee {
+        name: coffee.name.clone(), // używamy clone aby nie przenosić ownera
+        ..coffee
+    };
+}
+
 fn main() {
     
 }
