@@ -35,6 +35,7 @@ fn define_struct() {
 /*
  Struct można deklarować poza funkcją wtedy jest dostępny w całym pliku
 */
+#[derive(Debug)] // dostarczenie domyślnej implementacji Debug trait
 struct Coffee {
     price: f64,
     name: String,
@@ -110,6 +111,13 @@ fn drink_coffee(mut coffee: Coffee) { // domyślnie jest immutable ale możemy d
 fn drink_coffee_ref(coffee: &mut Coffee) { // przekazanie jako referencje, możemy równiez użyć mut
     println!("Drinking my delicious {}", coffee.name);
     coffee.is_hot = false;
+}
+
+// ============================================================================================== //
+
+fn debug_trait_for_structs() {
+    let coffee: Coffee = make_coffee(String::from("Latte"), 4.99, true);
+    println!("{coffee:?}");
 }
 
 fn main() {
