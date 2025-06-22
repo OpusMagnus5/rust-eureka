@@ -123,6 +123,7 @@ fn debug_trait_for_structs() {
 }
 
 // ============================================================================================== //
+
 #[derive(Debug)]
 struct TaylorSwiftSong {
     title: String,
@@ -139,7 +140,7 @@ struct TaylorSwiftSong {
     * Mutable struct reference - self: &mut TaylorSwiftSong / self: &mut Self / &mut self, przekazuje ownera
 */
 impl TaylorSwiftSong {
-    
+
     // Immutable struct value - self: TaylorSwiftSong / self: Self / self, przekazuje ownera
     fn display_song_info(self) {
         println!("Title: {}", self.title);
@@ -211,8 +212,55 @@ fn struct_methods() {
     };
     
     song.is_longer_than(&all_to_well); // przekazujemy tylko kolejne parametry, self jest ogarnięty przez Rust
-    
+
     let blank_space = TaylorSwiftSong::new(String::from("Blank Space"), 2014, 231);
+}
+
+// ============================================================================================== //
+
+/*
+ Builder pattern
+*/
+
+#[derive(Debug)]
+struct Computer {
+    cpu: String,
+    memory: u32,
+    hard_drive_capacity: u32
+}
+
+impl Computer {
+    fn new(cpu: String, memory: u32, hard_drive_capacity: u32) -> Self {
+        Self {
+            cpu,
+            memory,
+            hard_drive_capacity
+        }
+    }
+
+    fn upgarde_cpu(&mut self, new_cpu: String) -> &mut Self {
+        self.cpu = new_cpu;
+        self
+    }
+
+    fn upgarde_memory(&mut self, new_memory: u32) -> &mut Self {
+        self.memory = new_memory;
+        self
+    }
+
+    fn upgarde_hard_drive_capacity(&mut self, new_hard_drive_capacity: u32) -> &mut Self {
+        self.hard_drive_capacity = new_hard_drive_capacity;
+        self
+    }
+}
+
+fn builder_pattern() {
+    let mut computer = Computer::new(String::from("M3 Max"), 64, 2);
+
+    computer.upgarde_cpu(String::from("M4 Max"))
+        .upgarde_memory(128)
+        .upgarde_hard_drive_capacity(4);
+
 }
 
 fn main() {
