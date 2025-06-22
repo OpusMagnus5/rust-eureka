@@ -278,8 +278,16 @@ fn tuple_struct() {
     println!("{} hours {} minutes", work_shift.0, work_shift.1);
 }
 
-fn main() {
+// ============================================================================================== //
 
+/*
+ Struct bez pól do unit type struct.
+*/
+
+struct Empty;
+
+fn main() {
+    let my_empty_struct = Empty; // inicjalizacja
 }
 
 
