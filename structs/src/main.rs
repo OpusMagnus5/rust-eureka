@@ -92,6 +92,26 @@ fn struct_update_syntax() {
     };
 }
 
+// ============================================================================================== //
+
+fn passing_struct_into_function() {
+    let coffee: Coffee = make_coffee(String::from("Latte"), 4.99, true);
+    drink_coffee(coffee); // przekazanie ownera
+
+    let mut coffee2: Coffee = make_coffee(String::from("Latte"), 4.99, true);
+    drink_coffee_ref(&mut coffee2);
+}
+
+fn drink_coffee(mut coffee: Coffee) { // domyślnie jest immutable ale możemy dodac mut
+    println!("Drinking my delicious {}", coffee.name);
+    coffee.is_hot = false;
+}
+
+fn drink_coffee_ref(coffee: &mut Coffee) { // przekazanie jako referencje, możemy równiez użyć mut
+    println!("Drinking my delicious {}", coffee.name);
+    coffee.is_hot = false;
+}
+
 fn main() {
     
 }
