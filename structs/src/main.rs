@@ -41,6 +41,8 @@ struct Coffee {
     is_hot: bool,
 }
 
+// ============================================================================================== //
+
 fn create_struct_in_function() {
     let name = String::from("Latte");
     let coffee: Coffee = make_coffee(name, 4.99, true); // przeniesienie ownera name do struct
@@ -53,6 +55,21 @@ fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
         is_hot: is_hot,
     }
 }
+
+// ============================================================================================== //
+
+/*
+ Jeśli nazwy parametrów lub zmiennych pasują do nazwy pól w struct, możemy użyć nazwy pola bez :
+*/
+fn short_syntax(name: String, price: f64, is_hot: bool) -> Coffee {
+    Coffee {
+        price,
+        name,
+        is_hot,
+    }
+}
+
+// ============================================================================================== //
 
 fn main() {
     
