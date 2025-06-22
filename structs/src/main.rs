@@ -7,6 +7,8 @@
     * unit-like structs
  
 */
+use std::time::Duration;
+
 fn define_struct() {
     // definiowanie typu
     struct Coffee {
@@ -118,6 +120,62 @@ fn drink_coffee_ref(coffee: &mut Coffee) { // przekazanie jako referencje, może
 fn debug_trait_for_structs() {
     let coffee: Coffee = make_coffee(String::from("Latte"), 4.99, true);
     println!("{coffee:?}");
+}
+
+// ============================================================================================== //
+#[derive(Debug)]
+struct TaylorSwiftSong {
+    title: String,
+    release_year: u32,
+    duration_secs: u32
+}
+
+/*
+ W tym bloku deklarujemy funkcje powiązane ze structem.
+ self jest tak jakby this w Java, może to być zarówno sam struct jak i referencja, mutable jak i immutable
+    * Immutable struct value - self: TaylorSwiftSong / self: Self / self, przekazuje ownera
+    * Mutable struct value - mut self: TaylorSwiftSong / mut self: Self / mut self, przekazuje ownera
+    * Immutable struct reference - self: &TaylorSwiftSong / self: &Self / &self, nie przekazujemy ownera
+    * Mutable struct reference - self: &mut TaylorSwiftSong / self: &mut Self / &mut self, przekazuje ownera
+*/
+impl TaylorSwiftSong {
+    // Immutable struct value - self: TaylorSwiftSong / self: Self / self, przekazuje ownera
+    fn display_song_info(self) {
+        println!("Title: {}", self.title);
+        println!("Release Year: {}", self.release_year);
+        println!("Duration: {} seconds", self.duration_secs);
+    }
+    
+    // Mutable struct value - self: mut TaylorSwiftSong / self: mut Self / mut self, przekazuje ownera
+    fn double_length(mut self) {
+        self.duration_secs *= 2;
+        self.display_song_info();
+    }
+
+    // Immutable struct reference - self: &TaylorSwiftSong / self: &Self / &self, nie przekazujemy ownera
+    fn display_song_info_ref(self) {
+        println!("Title: {}", self.title);
+        println!("Release Year: {}", self.release_year);
+        println!("Duration: {} seconds", self.duration_secs);
+    }
+
+    // Mutable struct reference - self: &mut TaylorSwiftSong / self: &mut Self / &mut self, przekazuje ownera
+    fn double_length_ref(&mut self) {
+        self.duration_secs *= 2;
+    }
+}
+
+fn struct_methods() {
+    let mut song = TaylorSwiftSong {
+        title: String::from("Blank Space"),
+        release_year: 2014,
+        duration_secs: 231
+    };
+    
+    // song.display_song_info(); // Rust automatycznie przekazuje instancje do metody, ten sposób przekazuje ownera
+    // song.double_length(); // Rust automatycznie przekazuje instancje do metody, ten sposób przekazuje ownera
+    song.double_length_ref();
+    song.display_song_info_ref();
 }
 
 fn main() {
