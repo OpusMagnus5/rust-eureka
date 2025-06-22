@@ -155,7 +155,7 @@ impl TaylorSwiftSong {
     // Immutable struct reference - self: &TaylorSwiftSong / self: &Self / &self, nie przekazujemy ownera
     fn display_song_info_ref(&self) {
         println!("Title: {}", self.title);
-        println!("Release Year: {}", self.release_year);
+        println!("Years since Release: {}", self.years_since_release());
         println!("Duration: {} seconds", self.duration_secs);
     }
 
@@ -166,6 +166,10 @@ impl TaylorSwiftSong {
     
     fn is_longer_than(&self, other: &Self) -> bool {
         self.duration_secs > other.duration_secs
+    }
+    
+    fn years_since_release(&self) -> u32 {
+        2025 - self.release_year
     }
 }
 
