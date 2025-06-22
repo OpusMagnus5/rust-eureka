@@ -286,8 +286,13 @@ fn tuple_struct() {
 
 struct Empty;
 
-fn main() {
+fn unit_struct() {
     let my_empty_struct = Empty; // inicjalizacja
+}
+
+
+fn main() {
+    
 }
 
 
