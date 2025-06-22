@@ -145,7 +145,7 @@ impl TaylorSwiftSong {
         println!("Release Year: {}", self.release_year);
         println!("Duration: {} seconds", self.duration_secs);
     }
-    
+
     // Mutable struct value - self: mut TaylorSwiftSong / self: mut Self / mut self, przekazuje ownera
     fn double_length(mut self) {
         self.duration_secs *= 2;
@@ -153,7 +153,7 @@ impl TaylorSwiftSong {
     }
 
     // Immutable struct reference - self: &TaylorSwiftSong / self: &Self / &self, nie przekazujemy ownera
-    fn display_song_info_ref(self) {
+    fn display_song_info_ref(&self) {
         println!("Title: {}", self.title);
         println!("Release Year: {}", self.release_year);
         println!("Duration: {} seconds", self.duration_secs);
@@ -163,6 +163,10 @@ impl TaylorSwiftSong {
     fn double_length_ref(&mut self) {
         self.duration_secs *= 2;
     }
+    
+    fn is_longer_than(&self, other: &Self) -> bool {
+        self.duration_secs > other.duration_secs
+    }
 }
 
 fn struct_methods() {
@@ -171,15 +175,23 @@ fn struct_methods() {
         release_year: 2014,
         duration_secs: 231
     };
-    
+
     // song.display_song_info(); // Rust automatycznie przekazuje instancje do metody, ten sposób przekazuje ownera
     // song.double_length(); // Rust automatycznie przekazuje instancje do metody, ten sposób przekazuje ownera
     song.double_length_ref();
     song.display_song_info_ref();
+    
+    let all_to_well = TaylorSwiftSong {
+        title: String::from("All to well"),
+        release_year: 2012,
+        duration_secs: 327
+    };
+    
+    song.is_longer_than(&all_to_well); // przekazujemy tylko kolejne parametry, self jest ogarnięty przez Rust
 }
 
 fn main() {
-    
+
 }
 
 
