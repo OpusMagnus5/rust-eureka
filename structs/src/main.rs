@@ -139,6 +139,18 @@ struct TaylorSwiftSong {
     * Mutable struct reference - self: &mut TaylorSwiftSong / self: &mut Self / &mut self, przekazuje ownera
 */
 impl TaylorSwiftSong {
+    /*
+     Associated functions to nie są metody structa ale funkcje powiązane z jego namespacem np. String::from()
+     Jeśli nie ma parametru self to funkcja jest uznawana jako associated.
+    */
+    fn new(title: String, release_year: u32, duration_secs: u32) -> Self {
+        Self {
+            title,
+            release_year,
+            duration_secs
+        }
+    }
+    
     // Immutable struct value - self: TaylorSwiftSong / self: Self / self, przekazuje ownera
     fn display_song_info(self) {
         println!("Title: {}", self.title);
@@ -167,7 +179,7 @@ impl TaylorSwiftSong {
     fn is_longer_than(&self, other: &Self) -> bool {
         self.duration_secs > other.duration_secs
     }
-    
+
     fn years_since_release(&self) -> u32 {
         2025 - self.release_year
     }
@@ -192,6 +204,8 @@ fn struct_methods() {
     };
     
     song.is_longer_than(&all_to_well); // przekazujemy tylko kolejne parametry, self jest ogarnięty przez Rust
+    
+    let blank_space = TaylorSwiftSong::new(String::from("Blank Space"), 2014, 231);
 }
 
 fn main() {
