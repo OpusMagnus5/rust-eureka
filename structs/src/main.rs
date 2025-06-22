@@ -32,6 +32,28 @@ fn define_struct() {
     mocha.name = String::from("Caramel Macchiato");
 }
 
+/*
+ Struct można deklarować poza funkcją wtedy jest dostępny w całym pliku
+*/
+struct Coffee {
+    price: f64,
+    name: String,
+    is_hot: bool,
+}
+
+fn create_struct_in_function() {
+    let name = String::from("Latte");
+    let coffee: Coffee = make_coffee(name, 4.99, true); // przeniesienie ownera name do struct
+}
+
+fn make_coffee(name: String, price: f64, is_hot: bool) -> Coffee {
+    Coffee {
+        price: price,
+        name: name,
+        is_hot: is_hot,
+    }
+}
+
 fn main() {
     
 }
