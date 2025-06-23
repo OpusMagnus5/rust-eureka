@@ -69,6 +69,52 @@ fn nesting_enums_with_enums() {
     lunch = RestaurantItem::VeganPlate { meat: Meat::Steak };
 }
 
+// ============================================================================================== //
+
+enum OperatingSystem {
+    Windows,
+    MacOS,
+    Linux,
+}
+
+enum LaundryCycle {
+    Cold,
+    Hot { temperature: u32 },
+    Delicate(String)
+}
+
+fn match_and_enums() {
+    let my_computer = OperatingSystem::Windows;
+    let age: u32 = years_since_release(my_computer);
+    println!("My system is {age} old");
+    
+    wash_laundry(LaundryCycle::Cold);
+    wash_laundry(LaundryCycle::Hot { temperature: 60 });
+    wash_laundry(LaundryCycle::Delicate(String::from("Wool")));
+}
+
+fn years_since_release(os: OperatingSystem) -> u32 {
+    match os { 
+        OperatingSystem::Windows => 39,
+        OperatingSystem::MacOS => 23,
+        OperatingSystem::Linux => 34
+    }
+}
+
+fn wash_laundry(cycle: LaundryCycle) {
+    match cycle { 
+        LaundryCycle::Cold => {
+            println!("Running teh laundry with cold temp.");
+        },
+        LaundryCycle::Hot { temperature} => { // w ten sposób możemy uzyskać dostęp do danych Enuma
+            println!("Running teh laundry with {temperature} temp.");
+        },
+        LaundryCycle::Delicate(fabric_type) => {
+            println!("Running teh laundry for {fabric_type}");
+        }
+    }
+}
+
 fn main() {
     
 }
