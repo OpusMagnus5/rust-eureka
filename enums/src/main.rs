@@ -49,6 +49,26 @@ fn enums_with_associated_values() {
     };
 }
 
+// ============================================================================================== //
+
+#[derive(Debug)]
+enum Meat {
+    Chicken,
+    Steak
+}
+
+#[derive(Debug)]
+enum RestaurantItem {
+    Burrito(Meat),
+    Bowl(Meat),
+    VeganPlate { meat: Meat }
+}
+
+fn nesting_enums_with_enums() {
+    let mut lunch = RestaurantItem::Burrito(Meat::Chicken);
+    lunch = RestaurantItem::VeganPlate { meat: Meat::Steak };
+}
+
 fn main() {
     
 }
