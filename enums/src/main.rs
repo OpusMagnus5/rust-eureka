@@ -83,6 +83,22 @@ enum LaundryCycle {
     Delicate(String)
 }
 
+impl LaundryCycle {
+    fn wash_laundry(&self) { // zasady dla self są takie same jak dla struct
+        match self {
+            LaundryCycle::Cold => {
+                println!("Running teh laundry with cold temp.");
+            },
+            LaundryCycle::Hot { temperature} => { // referencja do temperatury czyli borrowing ownership
+                println!("Running teh laundry with {temperature} temp.");
+            },
+            LaundryCycle::Delicate(fabric_type) => {
+                println!("Running teh laundry for {fabric_type}");
+            }
+        }
+    }
+}
+
 fn match_and_enums() {
     let my_computer = OperatingSystem::Windows;
     let age: u32 = years_since_release(my_computer);
@@ -91,6 +107,8 @@ fn match_and_enums() {
     wash_laundry(LaundryCycle::Cold);
     wash_laundry(LaundryCycle::Hot { temperature: 60 });
     wash_laundry(LaundryCycle::Delicate(String::from("Wool")));
+    
+    LaundryCycle::Cold.wash_laundry();
 }
 
 fn years_since_release(os: OperatingSystem) -> u32 {
