@@ -133,6 +133,23 @@ fn wash_laundry(cycle: LaundryCycle) {
     }
 }
 
+#[derive(Debug)]
+enum OnlineOrderStatus {
+    Ordered,
+    Packed,
+    Shipped,
+    Delivered
+}
+
+impl OnlineOrderStatus {
+    fn check(&self) {
+        match self { 
+            OnlineOrderStatus::Delivered | OnlineOrderStatus::Packed => println!("Your item has been delivered"), // kilka enumów w jednym
+            other_status => println!("Your item is not there yet {other_status:?}") // zamiast _ możemy użyć zmiennej
+        }
+    }
+}
+
 fn main() {
     
 }
