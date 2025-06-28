@@ -133,6 +133,8 @@ fn wash_laundry(cycle: LaundryCycle) {
     }
 }
 
+// ============================================================================================== //
+
 #[derive(Debug)]
 enum OnlineOrderStatus {
     Ordered,
@@ -146,6 +148,26 @@ impl OnlineOrderStatus {
         match self { 
             OnlineOrderStatus::Delivered | OnlineOrderStatus::Packed => println!("Your item has been delivered"), // kilka enumów w jednym
             other_status => println!("Your item is not there yet {other_status:?}") // zamiast _ możemy użyć zmiennej
+        }
+    }
+}
+
+// ============================================================================================== //
+
+enum Milk {
+    LowFat(i32),
+    Whole
+}
+
+impl Milk {
+    fn drink(self) {
+        match self {
+            /*
+             matchuje tylko dany enum z daną wartością
+            */
+            Milk::LowFat(2) => println!("Delicious"),
+            Milk::Whole => println!("Whole milk"),
+            Milk::LowFat(percent) => println!("Low Fat {percent}")
         }
     }
 }
