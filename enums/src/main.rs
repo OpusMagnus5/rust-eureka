@@ -156,7 +156,8 @@ impl OnlineOrderStatus {
 
 enum Milk {
     LowFat(i32),
-    Whole
+    Whole,
+    NonDairy { kind: String }
 }
 
 impl Milk {
@@ -167,9 +168,43 @@ impl Milk {
             */
             Milk::LowFat(2) => println!("Delicious"),
             Milk::Whole => println!("Whole milk"),
-            Milk::LowFat(percent) => println!("Low Fat {percent}")
+            Milk::LowFat(percent) => println!("Low Fat {percent}"),
+            _ => println!("Different")
         }
     }
+}
+
+// ============================================================================================== //
+
+/*
+ if let to kombinacja ifa z deklaracją zmiennej
+*/
+
+fn if_let_combination() {
+    let my_beverage = Milk::Whole;
+    
+    if let Milk::Whole = my_beverage { // jeśli zmienna my_beverage jest równa Milk Whole
+        println!("You have whole milk");
+    }
+    
+    if let Milk::LowFat(percent) = my_beverage {
+        println!("You have whole milk with {percent}"); // mogę użyć powiązanej właściwości
+    }
+    
+    if let Milk::NonDairy { kind } = my_beverage {
+        println!("You have whole milk with {kind}");
+    }
+}
+
+fn let_else_combination() {
+    let my_beverage = Milk::Whole;
+    
+    let Milk::LowFat(percent) = my_beverage else {
+        println!("Not LowFat"); // wykona się tylko gdy nie jest czyli zaprzeczenie
+        return;
+    };
+
+    print!("{percent}"); // Zmienna jest dostępna tylko poza blokiem
 }
 
 fn main() {
