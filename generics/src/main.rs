@@ -28,6 +28,21 @@ fn make_tuple<T, U>(first: T, second: U) -> (T, U) {
     (first, second)
 }
 
+// ============================================================================================== //
+
+fn generics_in_structs() {
+    let gold_chest: TreasureChest<&str> = TreasureChest {
+        captain: String::from("Firebeard"),
+        treasure: "Gold"
+    };
+}
+
+#[derive(Debug)]
+struct TreasureChest<T> {
+    captain: String,
+    treasure: T
+}
+
 fn main() {
 
 }
