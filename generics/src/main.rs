@@ -15,6 +15,19 @@ fn intro_to_generics() {
     println!("{}", identity(5.77));
 }
 
+// ============================================================================================== //
+
+fn multiple_generics() {
+    make_tuple("hello", 5);
+}
+
+/*
+ <T, U> deklaracja dwóch różnych typów
+*/
+fn make_tuple<T, U>(first: T, second: U) -> (T, U) {
+    (first, second)
+}
+
 fn main() {
 
 }
