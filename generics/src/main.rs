@@ -78,6 +78,19 @@ fn generics_iand_impl() {
     special_chest.capital_captain();
 }
 
+// ============================================================================================== //
+
+enum Cheesesteak<T> {
+    Plain, // nie każdy enum musi wykorzystywać T
+    Topic(T)
+}
+
+fn generics_and_enums() {
+    let mushroom: Cheesesteak<&str> = Cheesesteak::Topic("mushroom");
+    // mimo że nie wykorzystuje T musimy zadeklarować konkretny typ generyczny
+    let cheesesteak: Cheesesteak<String> = Cheesesteak::Plain; 
+}
+
 fn main() {
 
 }
