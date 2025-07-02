@@ -43,6 +43,69 @@ struct TreasureChest<T> {
     treasure: T
 }
 
+impl TreasureChest<String> {
+    fn clean_treasure(&mut self) {
+        self.treasure = self.treasure.trim().to_string();
+    }    
+}
+
+impl TreasureChest<[&str; 3]> {
+    fn amount_of_treasure(&self) -> usize {
+        self.treasure.len()
+    }
+}
+
+impl<T> TreasureChest<T> { // Generyczna implementacja
+    fn capital_captain(&self) -> String {
+        self.captain.to_uppercase()
+    }
+}
+
+fn generics_iand_impl() {
+    let mut silver_chest: TreasureChest<String> = TreasureChest {
+        captain: String::from("Firebeard"),
+        treasure: String::from(" Silver ")
+    };
+    silver_chest.clean_treasure();
+
+    let special_chest: TreasureChest<[&str; 3]> = TreasureChest {
+        captain: String::from("Firebeard"),
+        treasure: ["GOld", "Silver", "Platinium"]
+    };
+    special_chest.amount_of_treasure();
+    
+    silver_chest.capital_captain();
+    special_chest.capital_captain();
+}
+
 fn main() {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
