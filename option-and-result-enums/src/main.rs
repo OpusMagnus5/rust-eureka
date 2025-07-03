@@ -12,6 +12,51 @@ fn option_enum() {
     let c: Option<i32> = None;
 }
 
+// ============================================================================================== //
+
+fn option_real_example() {
+    let musical_instruments = [
+        String::from("Guitar"),
+        String::from("Drums"),
+        String::from("Bass")
+    ];
+    
+    /*
+     Bezpieczniejsze sięganie po element tablicy, plus zwraca referencje
+    */
+    let bass: Option<&String> = musical_instruments.get(2);
+    println!("{:?}", bass); // Some("Bass")
+    
+    let invalid_instrument: Option<&String> = musical_instruments.get(100);
+    println!("{:?}", invalid_instrument); // None
+}
+
 fn main() {
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
