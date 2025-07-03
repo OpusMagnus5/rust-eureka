@@ -31,6 +31,26 @@ fn option_real_example() {
     println!("{:?}", invalid_instrument); // None
 }
 
+// ============================================================================================== //
+
+fn unwrap_and_expext_method() {
+    /*
+     extract - wyciąga wartość w przypadku Some a w przypadku None leci błąd
+     expect - robi to co extract ale można dorzucić swój własny error message
+    */
+
+    let musical_instruments = [
+        String::from("Guitar"),
+        String::from("Drums"),
+        String::from("Bass")
+    ];
+    
+    let bass: Option<&String> = musical_instruments.get(2);
+    let valid_instrument: &String = bass.unwrap();
+
+    let x: &String = bass.expect("Unable to retrieve element");
+}
+
 fn main() {
     
 }
