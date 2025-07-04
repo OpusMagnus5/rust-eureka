@@ -95,6 +95,17 @@ fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<b
  Option::None możemy użyć po prostu None
 */
 
+// ============================================================================================== //
+
+/*
+ W przypadku None unwrap_or zwraca przez nas zdefiniowaną wartość domyślną
+*/
+
+fn unwrap_or_method() {
+    let missing_value: Option<i32> = None;
+    println!("{}", missing_value.unwrap_or(0));
+}
+
 fn main() {
     
 }
