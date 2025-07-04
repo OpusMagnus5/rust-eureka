@@ -88,6 +88,13 @@ fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<b
     }
 }
 
+// ============================================================================================== //
+
+/*
+ Rust prelude to typy, funkcje, makro dostępne do użycia w każdym programie dlatego zamiast 
+ Option::None możemy użyć po prostu None
+*/
+
 fn main() {
     
 }
