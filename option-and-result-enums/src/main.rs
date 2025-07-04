@@ -106,6 +106,38 @@ fn unwrap_or_method() {
     println!("{}", missing_value.unwrap_or(0));
 }
 
+// ============================================================================================== //
+
+#[derive(Debug, Copy, Clone)]
+enum MyOption {
+    Some(i32),
+    None
+}
+
+impl MyOption {
+    fn unwrap(self) -> i32 { // nie boimy się o ownera bo mamy Clone i Copy
+        match self { 
+            MyOption::Some(value) => value,
+            MyOption::None => panic!("Uh oh") // wywołujemy błąd
+        }
+    }
+    
+    fn unwrap_or(self, fallback_value: i32) -> i32 {
+        match self {
+            MyOption::Some(value) => value,
+            MyOption::None => fallback_value
+        }
+    }
+}
+
+fn building_option_from_scratch() {
+    let some_option = MyOption::Some(100);
+    println!("{}", some_option.unwrap());
+    
+    let none_option = MyOption::None;
+    println!("{}", some_option.unwrap()); // error
+}
+
 fn main() {
     
 }
