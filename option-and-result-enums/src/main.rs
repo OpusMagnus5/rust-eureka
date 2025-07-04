@@ -138,6 +138,17 @@ fn building_option_from_scratch() {
     println!("{}", some_option.unwrap()); // error
 }
 
+// ============================================================================================== //
+
+/*
+ Result enum -> ma dwi wartości OK(T) i Err(E)
+*/
+
+fn result_enum() {
+    let ok: Result<i32, &str> = Ok(5); // musimy podać typ również dla Err
+    let disaster: Result<i32, &str> = Err("Something went wrong");
+}
+
 fn main() {
     
 }
