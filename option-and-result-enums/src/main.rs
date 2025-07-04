@@ -244,6 +244,16 @@ fn result_enum_nuances() {
     println!("{}", my_result3.unwrap()); // nie ma błędu
 }
 
+// ============================================================================================== //
+
+fn while_let_construct() {
+    let mut sauces = vec!["Mayonnaise", "Ketchup", "Ranch"];
+    
+    while let Some(sauce) = sauces.pop() { // pętla dopóki warunek z dynamiczną wartością jest spełniony
+        println!("The next sauce is {sauce}");
+    }
+}
+
 fn main() {
     
 }
