@@ -149,6 +149,14 @@ fn result_enum() {
     let disaster: Result<i32, &str> = Err("Something went wrong");
 }
 
+// ============================================================================================== //
+
+fn result_enum_real_example() {
+    let text = "50";
+    let text_as_number = text.parse::<i32>(); // Dostarczamy typ bo Rust musi wiedzieć jaki 
+    println!("{text_as_number:?}");
+}
+
 fn main() {
     
 }
