@@ -72,6 +72,22 @@ fn play(instrument: Option<&String>) {
     }
 }
 
+// ============================================================================================== //
+
+fn returning_option() {
+    let availability = is_item_in_stock(true, false);
+}
+
+fn is_item_in_stock(item_is_in_system: bool, item_is_in_stock: bool) -> Option<bool> {
+    if item_is_in_system && item_is_in_stock { 
+        Some(true)
+    } else if item_is_in_system { 
+        Some(false)
+    } else { 
+        None
+    }
+}
+
 fn main() {
     
 }
