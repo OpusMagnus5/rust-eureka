@@ -176,6 +176,18 @@ fn return_result_enum() {
     }
 }
 
+// ============================================================================================== //
+
+fn result_enum_methods() {
+    let result = divide(10.0, 2.0);
+
+    let unwrapped_result = result.unwrap(); // Ok zwraca value, Err rzuca wyjtek
+    // result.expect("Some error");
+    // result.unwrap_or(9.0);
+    // result.is_ok();
+    // result.is_err();
+}
+
 fn main() {
     
 }
