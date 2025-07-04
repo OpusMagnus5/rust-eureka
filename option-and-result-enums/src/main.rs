@@ -51,6 +51,27 @@ fn unwrap_and_expext_method() {
     let x: &String = bass.expect("Unable to retrieve element");
 }
 
+// ============================================================================================== //
+
+fn match_and_option() {
+    let musical_instruments = [
+        String::from("Guitar"),
+        String::from("Drums"),
+        String::from("Bass")
+    ];
+    
+    let bass: Option<&String> = musical_instruments.get(2);
+    play(bass);
+    println!("{bass:?}"); // Option wspiera Copy trait więc nie transferu ownera
+}
+
+fn play(instrument: Option<&String>) {
+    match instrument {
+        Some(instrument) => println!("Playing the {instrument}"),
+        None => println!("I have not instrument!")
+    }
+}
+
 fn main() {
     
 }
