@@ -188,6 +188,62 @@ fn result_enum_methods() {
     // result.is_err();
 }
 
+// ============================================================================================== //
+
+fn operation(great_success: bool) -> Result<String, String> {
+    if great_success { 
+        Ok("Success".to_string())
+    } else { 
+        Err("Error".to_string())
+    }
+}
+
+fn operation2(great_success: bool) -> Result<String, &'static str> { // &'static str - o tym będzie później
+    if great_success {
+        Ok("Success".to_string())
+    } else {
+        Err("Error")
+    }
+}
+
+fn operation3(great_success: bool) -> Result<&'static str, &'static str> { // &'static str - o tym będzie później
+    if great_success {
+        Ok("Success")
+    } else {
+        Err("Error")
+    }
+}
+
+fn result_enum_nuances() {
+    let my_result = operation(true);
+    let content = match my_result { // przniesienia ownera wrapowanych danych, zarówno Ok i Err
+        Ok(message) => message,
+        Err(message) => message
+    };
+    // println!("{}", my_result.unwrap()); // error, owner wcześniej przeniesiony
+    
+    let my_result2 = operation(true);
+    let content2 = match &my_result2 { // nie przenosimy ownera wartości
+        Ok(message) => message,
+        Err(message) => message
+    };
+    // println!("{}", my_result.unwrap()); // error, owner wcześniej przeniesiony
+    
+    let my_result3 = operation2(true);
+    let content = match my_result3 {
+        Ok(message) => message,
+        Err(message) => message.to_string() // musimy sprowadzić do tej samego typu
+    };
+    // println!("{}", my_result.unwrap()); // error, owner wcześniej przeniesiony
+
+    let my_result3 = operation3(true);
+    let content = match my_result3 { // &str wspiera Copy trait więc nie przenosimy ownera
+        Ok(message) => message,
+        Err(message) => message
+    };
+    println!("{}", my_result3.unwrap()); // nie ma błędu
+}
+
 fn main() {
     
 }
