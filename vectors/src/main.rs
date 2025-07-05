@@ -96,6 +96,28 @@ fn writing_elements() {
     println!("{pizza_toppings:#?}")
 }
 
+// ============================================================================================== //
+
+fn vector_capacity() {
+    /*
+     Jeśli zacznie brakować miejsca w przydzielonej pamięci, Rust przenosi cały vector w nowe miejsce,
+     dlatego też Rust zabrania kilku mutable references ponieważ dodając coś do vectora może mu się zmienić
+     adres w pamięci.
+    */
+
+    let mut seasons: Vec<&str> = Vec::with_capacity(4); // tworzy nowy wektor o zadanej pojemności
+    println!("Length: {}. Capacity {}", seasons.len(), seasons.capacity()); // 0, 4
+    
+    seasons.push("Summer");
+    seasons.push("Fall");
+    seasons.push("Winter");
+    seasons.push("Spring");
+    println!("Length: {}. Capacity {}", seasons.len(), seasons.capacity()); // 4, 4
+
+    seasons.push("Summer");
+    println!("Length: {}. Capacity {}", seasons.len(), seasons.capacity()); // 5, 8 Rust musiał przenieść do większej pamięci
+}
+
 fn main() {
 
     
