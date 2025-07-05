@@ -45,8 +45,24 @@ fn reading_elements() {
     let pizza_slice: &[String] = &pizza_toppings[1..3]; // tworzy referencje do sekcji vectora
 }
 
+// ============================================================================================== //
+
+/*
+ Metoda get wyciąga pojedynczą wartość po indexie i zwraca ją jako Option zawierającą referencje
+*/
+
+fn get_method() {
+    let pepperoni = String::from("Pepperoni");
+    let mushroom = String::from("Mushroom");
+    let sausage = String::from("Sausage");
+    let pizza_toppings: Vec<String> = vec![pepperoni, mushroom, sausage];
+
+    let option: Option<&String> = pizza_toppings.get(2);
+}
+
 fn main() {
 
+    
 }
 
 
