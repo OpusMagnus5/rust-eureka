@@ -60,6 +60,21 @@ fn get_method() {
     let option: Option<&String> = pizza_toppings.get(2);
 }
 
+// ============================================================================================== //
+
+fn ownership() {
+    let pepperoni = String::from("Pepperoni");
+    let mushroom = String::from("Mushroom");
+    let sausage = String::from("Sausage");
+    let pizza_toppings: Vec<String> = vec![pepperoni, mushroom, sausage];
+
+    let mut delicious_topping = pizza_toppings; // przeniesienie ownera
+    
+    let topping_reference = &delicious_topping[1];
+    delicious_topping.push(String::from("Olives"));
+    // println!("Topping is {topping_reference}"); // ERROR dwie referencje do danych vectora w tym jedna mutable
+}
+
 fn main() {
 
     
