@@ -75,6 +75,27 @@ fn ownership() {
     // println!("Topping is {topping_reference}"); // ERROR dwie referencje do danych vectora w tym jedna mutable
 }
 
+// ============================================================================================== //
+
+fn writing_elements() {
+    let pepperoni = String::from("Pepperoni");
+    let mushroom = String::from("Mushroom");
+    let sausage = String::from("Sausage");
+    let mut pizza_toppings: Vec<String> = vec![pepperoni, mushroom, sausage];
+    
+    pizza_toppings[1] = String::from("Olives"); // nadpisanie na danej pozycji
+    
+    // let target_topping = pizza_toppings[2] // nie zadziała bo nie możemy pożyczyć częściowo danych
+    let target_topping = &mut pizza_toppings[2];
+    // let another_topping = &pizza_toppings[2]; // nie można mieć dwóch referencji gdy jest jedna mut ale ⬇️
+    target_topping.push_str(" and Meatballs"); // concatenate strings
+    /*
+     OK bo Rust ma coś takiego jak Lifetime i widzi że ostatnie użyciu mut referencji jest przed użyciem nowej
+    */
+    let another_topping = &pizza_toppings[2];
+    println!("{pizza_toppings:#?}")
+}
+
 fn main() {
 
     
