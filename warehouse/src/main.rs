@@ -19,8 +19,10 @@
  Są trzy sposoby na tworzenie module:
     - słowo kluczowe mod i deklaracja rzeczy wewnątrz ciała
     - deklaracja modułu i utworzenie pliku z treścią modułu o takiej samej nazwie i w tym samym katalogu
+    - utworzenie folderu o nazwie modułu a w nim pliku mod.rs - patrz orders i zadeklarowanie modułu w pliku
 */
 mod inventory_file; // drugi sposób
+mod orders; 
 
 mod inventory { // pierwszy sposób
     const FLOOR_SPACE: i32 = 10000;
@@ -51,4 +53,5 @@ mod inventory { // pierwszy sposób
 fn main() {
     println!("The manager of our inventory is {}", inventory::MANAGER);
     println!("The manager of our inventory is {}", inventory_file::MANAGER);
+    println!("The manager of our orders is {}", orders::MANAGER);
 }
