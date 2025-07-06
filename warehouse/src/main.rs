@@ -14,7 +14,15 @@
  dla wszystkiego co jest wewnątrz module
 */
 
-mod inventory {
+/*
+ funkcja main i plik main.rs to unnamed module od którego Rust zaczyna kompilować program
+ Są trzy sposoby na tworzenie module:
+    - słowo kluczowe mod i deklaracja rzeczy wewnątrz ciała
+    - deklaracja modułu i utworzenie pliku z treścią modułu o takiej samej nazwie i w tym samym katalogu
+*/
+mod inventory_2; // drugi sposób
+
+mod inventory { // pierwszy sposób
     const FLOOR_SPACE: i32 = 10000;
     pub const MANAGER: &str = "Ivan Inventory"; // musimy użyć pub aby można było uzyskać dostęp z zewnątrz
     
@@ -41,5 +49,6 @@ mod inventory {
  Wszystko domyślnie w module ma scope private.
 */
 fn main() {
-    println!("The manager of our inventory is {}", inventory::MANAGER)
+    println!("The manager of our inventory is {}", inventory::MANAGER);
+    println!("The manager of our inventory is {}", inventory_2::MANAGER);
 }
