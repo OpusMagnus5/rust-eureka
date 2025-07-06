@@ -20,7 +20,7 @@
     - słowo kluczowe mod i deklaracja rzeczy wewnątrz ciała
     - deklaracja modułu i utworzenie pliku z treścią modułu o takiej samej nazwie i w tym samym katalogu
 */
-mod inventory_2; // drugi sposób
+mod inventory_file; // drugi sposób
 
 mod inventory { // pierwszy sposób
     const FLOOR_SPACE: i32 = 10000;
@@ -50,5 +50,5 @@ mod inventory { // pierwszy sposób
 */
 fn main() {
     println!("The manager of our inventory is {}", inventory::MANAGER);
-    println!("The manager of our inventory is {}", inventory_2::MANAGER);
+    println!("The manager of our inventory is {}", inventory_file::MANAGER);
 }
