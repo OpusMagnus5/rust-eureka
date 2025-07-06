@@ -16,7 +16,7 @@
 
 mod inventory {
     const FLOOR_SPACE: i32 = 10000;
-    const MANAGER: &str = "Ivan Inventory";
+    pub const MANAGER: &str = "Ivan Inventory"; // musimy użyć pub aby można było uzyskać dostęp z zewnątrz
     
     #[derive(Debug)]
     enum ProductCategory {
@@ -36,6 +36,10 @@ mod inventory {
     }
 }
 
+/*
+ Aby dostać się do czegoś w module musimy użyć nazwy modułu a następnie scope resolution operator :: 
+ Wszystko domyślnie w module ma scope private.
+*/
 fn main() {
-    
+    println!("The manager of our inventory is {}", inventory::MANAGER)
 }
