@@ -91,8 +91,7 @@ fn public() {
  - stworzyć plik w folderze inventory_file/products.rs
  - stworzyć katalog inventory_file/products/mod.rs
  
- 
- 
+ Musimy również dodać pub do deklaracji submodułu
 */
 
 fn submodules() {
