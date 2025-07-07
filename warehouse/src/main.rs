@@ -23,7 +23,6 @@
     - deklaracja modułu i utworzenie pliku z treścią modułu o takiej samej nazwie i w tym samym katalogu
     - utworzenie folderu o nazwie modułu a w nim pliku mod.rs - patrz orders i zadeklarowanie modułu w pliku
 */
-use crate::inventory_file::ProductCategory;
 
 mod inventory_file; // drugi sposób
 mod orders; 
@@ -78,7 +77,32 @@ fn public() {
     
     let tall_ladder = inventory_file::Item { 
         name: String::from("Ladder-o-matic 2000"),
-        category: ProductCategory::Ladder,
+        category: inventory_file::ProductCategory::Ladder,
+        quantity: 100
+    };
+    println!("{tall_ladder:#?}");
+}
+
+// ============================================================================================== //
+
+/*
+ aby stworzyć submodule mamy trzy opcje:
+ - inline
+ - stworzyć plik w folderze inventory_file/products.rs
+ - stworzyć katalog inventory_file/products/mod.rs
+ 
+ 
+ 
+*/
+
+fn submodules() {
+
+    let favourite_category = inventory_file::products::ProductCategory::Hammer;
+    println!("My favourite category of item is {favourite_category:?}");
+
+    let tall_ladder = inventory_file::products::Item {
+        name: String::from("Ladder-o-matic 2000"),
+        category: inventory_file::products::ProductCategory::Ladder,
         quantity: 100
     };
     println!("{tall_ladder:#?}");

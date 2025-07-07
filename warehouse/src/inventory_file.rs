@@ -1,3 +1,5 @@
+pub mod products; // musimy również dodać pub do deklaracji submodułu
+
 pub const FLOOR_SPACE: i32 = 10000;
 pub const MANAGER: &str = "Ivan Inventory"; // musimy użyć pub aby można było uzyskać dostęp z zewnątrz
 
@@ -12,7 +14,7 @@ pub enum ProductCategory {
  impl nie oznaczamy pub ale już metody tak
 */
 #[derive(Debug)]
-pub struct Item { 
+pub struct Item {
     pub name: String,
     pub category: ProductCategory,
     pub quantity: u32
@@ -21,3 +23,25 @@ pub struct Item {
 pub fn talk_to_manager() {
     println!("Hey, {MANAGER}, how's your coffee?");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
