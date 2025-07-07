@@ -107,6 +107,17 @@ fn submodules() {
     println!("{tall_ladder:#?}");
 }
 
+// ============================================================================================== //
+
+/*
+ absolute path - to ścieżka zaczynająca się od root path
+ relative path - to ścieżka z obecnej lokacji
+*/
+
+fn crate_prefix() {
+    let favourite_category = crate::inventory_file::products::ProductCategory::Hammer; // absolute path z crate prefixem;
+}
+
 fn main() {
     
 }
