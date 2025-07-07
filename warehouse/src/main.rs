@@ -90,7 +90,7 @@ fn public() {
  - inline
  - stworzyć plik w folderze inventory_file/products.rs
  - stworzyć katalog inventory_file/products/mod.rs
- 
+
  Musimy również dodać pub do deklaracji submodułu
 */
 
@@ -116,6 +116,20 @@ fn submodules() {
 
 fn crate_prefix() {
     let favourite_category = crate::inventory_file::products::ProductCategory::Hammer; // absolute path z crate prefixem;
+}
+
+// ============================================================================================== //
+
+/*
+ use keyword - służy do importu scope do obecnego pliku / scope co skraca definiowanie ścieżki,
+ coś jak import w java
+*/
+
+use inventory_file::products::ProductCategory;
+// use inventory_file::products::{ Item, ProductCategory }; // Jeśli chcemy kilka rzeczy z danego modułu
+
+fn use_keyword() {
+    let favourite_category = ProductCategory::Hammer; // i możemy skrócić dostęp
 }
 
 fn main() {
