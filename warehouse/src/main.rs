@@ -147,6 +147,12 @@ fn aliases() {
     println!("The manager of our orders is {}", ORDERS_MANAGER);
 }
 
+// ============================================================================================== //
+
+fn pub_use() {
+    println!("The category of our inventory is {:?}", inventory_file::Category::Hammer);
+}
+
 fn main() {
     
 }
