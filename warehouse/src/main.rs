@@ -132,6 +132,11 @@ fn use_keyword() {
     let favourite_category = ProductCategory::Hammer; // i możemy skrócić dostęp
 }
 
+// ============================================================================================== //
+
+// self dostarcza, oprócz ProductCategory również siebie czyli moduł products
+// use inventory_file::products::{ self, ProductCategory };
+
 fn main() {
     
 }
