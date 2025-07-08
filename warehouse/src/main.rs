@@ -153,6 +153,15 @@ fn pub_use() {
     println!("The category of our inventory is {:?}", inventory_file::Category::Hammer);
 }
 
+// ============================================================================================== //
+
+use fake::{ Fake, Faker }; // użycie biblioteki
+use inventory_file::products::Item;
+
+fn external_crate() {
+    let fake_item: Item = Faker.fake();
+}
+
 fn main() {
     
 }
