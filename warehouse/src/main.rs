@@ -193,6 +193,15 @@ use warehouse::FLOOR_SPACE; // możemy używać lib.rs odwołując się do nazwy
  cargo run --bin warehouse
 */
 
+// ============================================================================================== //
+
+/*
+ Dokument comments /// dodają automatycznie dokumentacje, potem możemy zbudować za pomocą
+ cargo doc --no-deps i dokumentacja pojawi się w target
+*/
+
+/// Primary entrypoint into our warehouse program
+
 fn main() {
     
 }
