@@ -176,6 +176,12 @@ use std::io;
 use std::collections::*; // importuje wszystko z collections
 // use std::prelude::v1 // prelude które domyślnie importuje takie klasy jak String, Copy itp
 
+// ============================================================================================== //
+
+/*
+ crates.io - repozytorium podobne do mavena
+*/
+
 fn main() {
     
 }
