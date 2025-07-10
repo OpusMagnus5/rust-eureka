@@ -184,6 +184,15 @@ use std::collections::*; // importuje wszystko z collections
 
 use warehouse::FLOOR_SPACE; // możemy używać lib.rs odwołując się do nazwy programu
 
+// ============================================================================================== //
+
+/*
+ W Rust można tworzyć wiele binarek w jednym projekcie tworząc pliki o dowolnej nazwie w katalogu
+ src/bin/
+ uruchamiając program poleceniem cargo run mając wiele binarek trzeba podać która jest main:
+ cargo run --bin warehouse
+*/
+
 fn main() {
     
 }
