@@ -134,6 +134,36 @@ fn use_keyword() {
 
 // ============================================================================================== //
 
+// self dostarcza, oprócz ProductCategory również siebie czyli moduł products
+// use inventory_file::products::{ self, ProductCategory };
+
+// ============================================================================================== //
+
+use inventory_file::MANAGER as INVENTORY_MANAGER; // alias dla importu np. w celi konfliktu nazw;
+use orders::MANAGER as ORDERS_MANAGER;
+
+fn aliases() {
+    println!("The manager of our inventory is {}", INVENTORY_MANAGER);
+    println!("The manager of our orders is {}", ORDERS_MANAGER);
+}
+
+// ============================================================================================== //
+
+fn pub_use() {
+    println!("The category of our inventory is {:?}", inventory_file::Category::Hammer);
+}
+
+// ============================================================================================== //
+
+use fake::{ Fake, Faker }; // użycie biblioteki
+use inventory_file::products::Item;
+
+fn external_crate() {
+    let fake_item: Item = Faker.fake();
+}
+
+// ============================================================================================== //
+
 /*
  std to nazwa standard library
 */

@@ -1,4 +1,5 @@
 pub mod products; // musimy również dodać pub do deklaracji submodułu
+pub use products::ProductCategory as Category; // użycie pub sprawia że eksportuje do wyżej więc można stosować zamiast pub w mod
 
 pub const FLOOR_SPACE: i32 = 10000;
 pub const MANAGER: &str = "Ivan Inventory"; // musimy użyć pub aby można było uzyskać dostęp z zewnątrz
