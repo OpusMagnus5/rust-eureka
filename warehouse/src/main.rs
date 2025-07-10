@@ -182,6 +182,8 @@ use std::collections::*; // importuje wszystko z collections
  crates.io - repozytorium podobne do mavena
 */
 
+use warehouse::FLOOR_SPACE; // możemy używać lib.rs odwołując się do nazwy programu
+
 fn main() {
     
 }
