@@ -170,6 +170,12 @@ fn external_crate() {
 
 use std::io;
 
+// ============================================================================================== //
+
+//* // glob operator
+use std::collections::*; // importuje wszystko z collections
+// use std::prelude::v1 // prelude które domyślnie importuje takie klasy jak String, Copy itp
+
 fn main() {
     
 }
