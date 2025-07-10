@@ -132,6 +132,14 @@ fn use_keyword() {
     let favourite_category = ProductCategory::Hammer; // i możemy skrócić dostęp
 }
 
+// ============================================================================================== //
+
+/*
+ std to nazwa standard library
+*/
+
+use std::io;
+
 fn main() {
     
 }
