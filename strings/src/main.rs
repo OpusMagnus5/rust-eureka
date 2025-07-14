@@ -21,6 +21,16 @@ fn concatenation() {
     println!("{}", full_name);
 }
 
+// ============================================================================================== //
+
+fn format_macro() {
+    let first_name = String::from("Sylvester");
+    let last_name = String::from("Stallone");
+    // nie przekazujemy ownera tylko referencje tak jak w println
+    let full_name = format!("{} {}", first_name, last_name);
+    println!("{}", full_name);
+}
+
 fn main() {
-    concatenation();
+    format_macro();
 }
