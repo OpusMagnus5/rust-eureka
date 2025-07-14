@@ -48,6 +48,54 @@ fn string_methods() {
     println!("{:?}", genres);
 }
 
-fn main() {
-    string_methods();
+// ============================================================================================== //
+
+use std::io;
+
+fn user_input() {
+    let mut name = String::new();
+    println!("What is your name?");
+    // zwraca enum Result z liczbą bajtów wczytanych
+    io::stdin().read_line(&mut name).expect("Failed to collect input"); // wczytuje również Enter z zatwierdzenia
+    println!("Hello, {}", name);
 }
+
+fn main() {
+    user_input();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
