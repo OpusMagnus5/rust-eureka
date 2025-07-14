@@ -162,6 +162,46 @@ fn external_crate() {
     let fake_item: Item = Faker.fake();
 }
 
+// ============================================================================================== //
+
+/*
+ std to nazwa standard library
+*/
+
+use std::io;
+
+// ============================================================================================== //
+
+//* // glob operator
+use std::collections::*; // importuje wszystko z collections
+// use std::prelude::v1 // prelude które domyślnie importuje takie klasy jak String, Copy itp
+
+// ============================================================================================== //
+
+/*
+ crates.io - repozytorium podobne do mavena
+*/
+
+use warehouse::FLOOR_SPACE; // możemy używać lib.rs odwołując się do nazwy programu
+
+// ============================================================================================== //
+
+/*
+ W Rust można tworzyć wiele binarek w jednym projekcie tworząc pliki o dowolnej nazwie w katalogu
+ src/bin/
+ uruchamiając program poleceniem cargo run mając wiele binarek trzeba podać która jest main:
+ cargo run --bin warehouse
+*/
+
+// ============================================================================================== //
+
+/*
+ Dokument comments /// dodają automatycznie dokumentacje, potem możemy zbudować za pomocą
+ cargo doc --no-deps i dokumentacja pojawi się w target
+*/
+
+/// Primary entrypoint into our warehouse program
+
 fn main() {
     
 }
