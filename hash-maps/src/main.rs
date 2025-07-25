@@ -15,6 +15,20 @@ fn create_hashmap() {
     println!("{country_capitals:?}")
 }
 
+// ============================================================================================== //
+
+fn remove_method() {
+    let data = [
+        ("Bobby", 7),
+        ("Grand", 4),
+        ("Ben", 6)
+    ];
+    let years_at_company: HashMap<&str, i32> = HashMap::from(data); // inny sposób inicjalizacji przez array tupli
+
+    let ben: Option<i32> = years_at_company.remove("Ben"); // usuwa i zwraca option wartości dla klucza
+
+}
+
 fn main() {
     create_hashmap();
 }
