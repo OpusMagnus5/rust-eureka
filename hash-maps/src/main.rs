@@ -23,12 +23,29 @@ fn remove_method() {
         ("Grand", 4),
         ("Ben", 6)
     ];
-    let years_at_company: HashMap<&str, i32> = HashMap::from(data); // inny sposób inicjalizacji przez array tupli
+    let mut years_at_company: HashMap<&str, i32> = HashMap::from(data); // inny sposób inicjalizacji przez array tupli
 
     let ben: Option<i32> = years_at_company.remove("Ben"); // usuwa i zwraca option wartości dla klucza
 
 }
 
+// ============================================================================================== //
+
+fn ownership() {
+    /* Hashmap jest zapisywany na heapie i jako kolekcja jest też ownerem wartości zawartych w sobie */
+    let mut coffee_pairings: HashMap<&str, &str> = HashMap::new(); // zmiana na &str, &str
+    let drink = String::from("latte");
+    let milk = String::from("Oat Milk");
+    coffee_pairings.insert(&drink, &milk);
+    println!("{coffee_pairings:#?}");
+
+    /*
+     println!("{milk}"); panic bo ownership został przejęty przez mape, żeby tego uniknąć
+     możemy przekazać clony wartości lub referencje do nich ale wtedy nie możemy przekazywać &str ale
+     gdy zadeklarujemy typ mapy z &str wtedy Rust poradzi sobie automatyczną konwersją &str -> &String
+    */
+}
+
 fn main() {
-    create_hashmap();
+    ownership();
 }
