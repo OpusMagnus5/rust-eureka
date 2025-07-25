@@ -46,6 +46,20 @@ fn ownership() {
     */
 }
 
+// ============================================================================================== //
+
+fn access_value_by_key() {
+    let mut coffee_pairings: HashMap<&str, &str> = HashMap::new();
+    let drink = String::from("latte");
+    let milk = String::from("Oat Milk");
+    coffee_pairings.insert(&drink, &milk);
+
+    let value = coffee_pairings["latte"]; // dostęp do wartości ale jeśli jej nie ma to błąd
+    println!("{value}");
+    let option_value = coffee_pairings.get("latte"); // zwraca option z referencją do value
+    let value = option_value.copied(); // tu jest kopia wartości ale nadal option
+}
+
 fn main() {
     ownership();
 }
