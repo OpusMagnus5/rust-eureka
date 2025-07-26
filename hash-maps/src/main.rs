@@ -1,3 +1,4 @@
+use std::collections::hash_set::{Difference, Union};
 use std::collections::HashMap;
 
 fn create_hashmap() {
@@ -84,6 +85,42 @@ fn entry_method() {
     */
     let entry = coffee_pairings.entry("Latte");
     entry.or_insert("Some Milk"); // wstawia pod klucz wartość jeśli nie istnieje
+}
+
+// ============================================================================================== //
+
+use std::collections::HashSet;
+use std::hash::RandomState;
+
+fn hashset() {
+    /*
+     Działa jak Set w java
+    */
+    let mut concert_queue = HashSet::<&str>::new();
+    concert_queue.insert("Molly");
+    concert_queue.insert("Megan");
+    
+    concert_queue.insert("Molly"); // nie zostanie dodana bo już istnieje, brak duplikatów
+    concert_queue.remove("Franny"); // zwraca true lub false jeśli udało się usunąć
+    concert_queue.contains("Megan"); // sprawdza czy zawiera element
+    concert_queue.get("Molly"); // zwraca Option
+    
+    let mut movie_queue: HashSet<&str> = HashSet::new();
+    movie_queue.insert("Boris");
+    movie_queue.insert("Phil");
+
+    let union: Union<&str, RandomState> = concert_queue.union(&movie_queue); // połączenie dwóch setów
+    
+    // zwraca to czego nie znaleziono w movie_queue a jest w concert_queue
+    let difference: Difference<&str, RandomState> = concert_queue.difference(&movie_queue);
+    
+    concert_queue.symmetric_difference(&movie_queue); // zwraca połączenie setów ale wyrzuca rzeczy które są wspólne
+    
+    concert_queue.is_disjoint(&movie_queue); // zwraca true jeśli oba sety nie mają wspólnych wartości
+    
+    concert_queue.is_subset(&movie_queue); // zwraca true jeśli concert_queue zawiera się w movie_queue
+    
+    concert_queue.is_superset(&movie_queue); // sprawdza czy concert_queue nadzbiorem movie_queue - odwrotność is_subset
 }
 
 fn main() {
