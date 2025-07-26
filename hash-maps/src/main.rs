@@ -71,6 +71,51 @@ fn overriding_value() {
     coffee_pairings.insert("Latte", "Pistachio Milk"); // nadpisanie wartości pod kluczem
 }
 
+// ============================================================================================== //
+
+fn entry_method() {
+    let mut coffee_pairings: HashMap<&str, &str> = HashMap::new();
+    let drink = String::from("Latte");
+    let milk = String::from("Oat Milk");
+    coffee_pairings.insert(&drink, &milk);
+    
+    /*
+     zwraca enum Entry który ma dwa warianty Occupied lub Vacant
+    */
+    let entry = coffee_pairings.entry("Latte");
+    entry.or_insert("Some Milk"); // wstawia pod klucz wartość jeśli nie istnieje
+}
+
 fn main() {
     ownership();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
