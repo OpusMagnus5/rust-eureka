@@ -10,6 +10,18 @@ fn panic_macro() {
     panic!("Something went wrong"); // rzuca błąd
 }
 
+// ============================================================================================== //
+
+use std::process;
+
+fn process_module_and_exit_function() {
+    /*
+     Aby zamknąć program bez błędów używamy funkcji exit z modułu process
+    */
+    
+    process::exit(0); // zamyka program z kodem, 0 - brak błędu
+}
+
 fn main() {
     panic_macro();
 }
