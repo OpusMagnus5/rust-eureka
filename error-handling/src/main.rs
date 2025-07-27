@@ -34,7 +34,7 @@ fn standard_error() {
 
 // ============================================================================================== //
 
-use std::fs::File;
+use std::fs::{ self, File };
 
 fn opening_file() {
     let file = match File::open("story.txt") { // otwiera plik i zwraca enum
@@ -173,6 +173,29 @@ fn read_file_2() -> Result<String, io::Error> {
     File::open(input.trim())?.read_to_string(&mut file_contents)?;
 
     Ok(file_contents)
+}
+
+// ============================================================================================== //
+
+fn read_to_string_function() {
+    let file_results: Result<String, io::Error> = read_file_3();
+
+    match file_results {
+        Ok(contents) => println!("{contents}"),
+        Err(error) => {
+            eprintln!("There was an error {error}");
+            process::exit(1);
+        }
+    }
+}
+
+fn read_file_3() -> Result<String, io::Error> {
+    println!("Please enter the name of the file you'd like to read:");
+    
+    let mut input = String::new();
+    stdin().read_line(&mut input)?;
+    
+    fs::read_to_string(input.trim())
 }
 
 fn main() {
