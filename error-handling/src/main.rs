@@ -49,7 +49,7 @@ fn opening_file() {
 
 // ============================================================================================== //
 
-use std::io::{ stdin, Read };
+use std::io::{ stdin, self, Read };
 
 fn user_input() {
     println!("Please enter the name of the file you'd like to read:");
@@ -106,8 +106,47 @@ fn reading_file_content() {
     println!("{file_contents}")
 }
 
+// ============================================================================================== //
+
+fn propagating_error() {
+    let file_results: Result<String, io::Error> = read_file();
+    
+    match file_results { 
+        Ok(contents) => println!("{contents}"),
+        Err(error) => {
+            eprintln!("There was an error {error}");
+            process::exit(1);
+        }
+    }
+}
+
+fn read_file() -> Result<String, io::Error> {
+    println!("Please enter the name of the file you'd like to read:");
+    let mut input = String::new();
+
+    let user_requested_file = stdin().read_line(&mut input);
+
+    if let Err(error) = user_requested_file {
+        return Err(error); // przekazywanie błędu wyżej
+    }
+
+    let mut file = match File::open(input.trim()) {
+        Ok(file) => file,
+        Err(error) => return Err(error) // przekazywanie błędu wyżej
+    };
+
+    let mut file_contents = String::new();
+    
+    let read_operation = file.read_to_string(&mut file_contents);
+    if let Err(error) = read_operation {
+        return Err(error); // przekazywanie błędu wyżej
+    }
+
+    Ok(file_contents)
+}
+
 fn main() {
-    reading_file_content();
+    propagating_error();
 }
 
 
