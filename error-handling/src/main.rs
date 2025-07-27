@@ -32,6 +32,21 @@ fn standard_error() {
     eprintln!("Some error update");
 }
 
+// ============================================================================================== //
+
+use std::fs::File;
+
+fn opening_file() {
+    let file = match File::open("story1.txt") { // otwiera plik i zwraca enum
+        Ok(file) => file,
+        Err(error) => {
+            eprintln!("Something went wrong reading the file. The error was {error:?}");
+            process::exit(1);
+        }
+    }; 
+    println!("{file:?}");
+}
+
 fn main() {
-    standard_error();
+    opening_file();
 }
