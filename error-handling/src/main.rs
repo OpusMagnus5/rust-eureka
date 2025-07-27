@@ -22,6 +22,16 @@ fn process_module_and_exit_function() {
     process::exit(0); // zamyka program z kodem, 0 - brak błędu
 }
 
+// ============================================================================================== //
+
+fn standard_error() {
+    /*
+     Drukuje wiadomość do wyjścia err
+    */
+    println!("Some status update");
+    eprintln!("Some error update");
+}
+
 fn main() {
-    panic_macro();
+    standard_error();
 }
