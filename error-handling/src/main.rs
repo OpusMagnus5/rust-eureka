@@ -198,8 +198,28 @@ fn read_file_3() -> Result<String, io::Error> {
     fs::read_to_string(input.trim())
 }
 
+// ============================================================================================== //
+
+fn using_question_mark_with_option() {
+    /*
+     Jeśli metoda zwróci None to funkcja się zakończy zwracając None a jeśli Some to zwraca zawartość Some
+    */
+    
+    let mut animals = vec!["Giraffe", "Monkey", "Zebra"];
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    println!("{:?}", length_of_last_element(&mut animals));
+    
+    println!("{:?}", length_of_last_element(&mut animals)); // None
+}
+
+fn length_of_last_element(input: &mut Vec<&str>) -> Option<usize> {
+    let last_element = input.pop()?;
+    Some(last_element.len())
+}
+
 fn main() {
-    questionmark_operator();
+    using_question_mark_with_option();
 }
 
 
