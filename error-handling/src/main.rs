@@ -49,14 +49,14 @@ fn opening_file() {
 
 // ============================================================================================== //
 
-use std::io::stdin;
+use std::io::{ stdin, Read };
 
 fn user_input() {
     println!("Please enter the name of the file you'd like to read:");
     let mut input = String::new();
-    
+
     let user_requested_file = stdin().read_line(&mut input); // odczytanie linii
-    
+
     if let Err(error) = user_requested_file {
         eprintln!("Something went wrong collecting user input. The error was {error}");
         process::exit(1);
@@ -72,8 +72,42 @@ fn user_input() {
     println!("{file:?}");
 }
 
+// ============================================================================================== //
+
+fn reading_file_content() {
+    println!("Please enter the name of the file you'd like to read:");
+    let mut input = String::new();
+
+    let user_requested_file = stdin().read_line(&mut input); // odczytanie linii
+
+    if let Err(error) = user_requested_file {
+        eprintln!("Something went wrong collecting user input. The error was {error}");
+        process::exit(1);
+    }
+
+    let mut file = match File::open(input.trim()) { // musi być mut aby odczytać, pewnie zmienia swoje wewnętrzne wskaźniki
+        Ok(file) => file,
+        Err(error) => {
+            eprintln!("Something went wrong opening the file. The error was {error:?}");
+            process::exit(1);
+        }
+    };
+    
+    let mut file_contents = String::new();
+    /*
+     aby móc wykorzystać metodę read_to_string musimy zadeklarować Read trait
+    */
+    let read_operation = file.read_to_string(&mut file_contents);
+    if let Err(error) = read_operation {
+        eprintln!("Something went wrong reading file as a string. The error was {error}");
+        process::exit(1);
+    }
+    
+    println!("{file_contents}")
+}
+
 fn main() {
-    user_input();
+    reading_file_content();
 }
 
 
