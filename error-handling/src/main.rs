@@ -145,8 +145,38 @@ fn read_file() -> Result<String, io::Error> {
     Ok(file_contents)
 }
 
+// ============================================================================================== //
+
+fn questionmark_operator() {
+    let file_results: Result<String, io::Error> = read_file_2();
+
+    match file_results {
+        Ok(contents) => println!("{contents}"),
+        Err(error) => {
+            eprintln!("There was an error {error}");
+            process::exit(1);
+        }
+    }
+}
+
+fn read_file_2() -> Result<String, io::Error> {
+    println!("Please enter the name of the file you'd like to read:");
+    let mut input = String::new();
+
+    /*
+     ? - jeśli metoda zwraca Ok program zwraca to co w OK, jeśli Err przekazuje go wyżej
+    */
+    stdin().read_line(&mut input)?;
+
+    let mut file_contents = String::new();
+    /* Można łączyć wywołania po ? */
+    File::open(input.trim())?.read_to_string(&mut file_contents)?;
+
+    Ok(file_contents)
+}
+
 fn main() {
-    propagating_error();
+    questionmark_operator();
 }
 
 
