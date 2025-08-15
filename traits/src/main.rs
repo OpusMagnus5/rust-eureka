@@ -26,6 +26,10 @@ impl Hotel {
             reservations: HashMap::new()
         }
     }
+    
+    fn summarize(&self) -> String {
+        format!("{}: {}", self.name, self.get_description())
+    }
 }
 
 // implementacja dla Hotel
@@ -68,7 +72,7 @@ impl Accommodation for AirBnB {
 
 fn implementing_trait() {
     let mut hotel = Hotel::new("The Luxe");
-    println!("{}", hotel.get_description());
+    println!("{}", hotel.summarize());
     hotel.book("Piers", 5);
     println!("{hotel:#?}");
     
