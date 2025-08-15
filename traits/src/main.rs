@@ -119,6 +119,40 @@ fn mix_and_match_3<T: Accommodation, U: Accommodation>(first: &mut T, second: &m
     second.book(guest, 2);
 }
 
+/* ============================================================================================== */
+
+trait Description {
+    fn get_description(&self) -> String {
+        String::from("A wonderful place to stay!")
+    }
+}
+
+impl Description for Hotel {
+    fn get_description(&self) -> String {
+        format!("{} is the pinnacle of the luxury", self.name)
+    }
+}
+
+impl Description for AirBnB {
+    fn get_description(&self) -> String {
+        format!("Please enjoy {}'s apartment", self.host)
+    }
+}
+
+fn mix_and_match_4(
+    first: &mut (impl Accommodation + Description), // musi również wspierać Description
+    second: &mut impl Accommodation, 
+    guest: &str
+) {
+    first.book(guest, 1);
+    second.book(guest, 2);
+}
+
+// przykład z generics
+fn book_for_one_night_3<T: Accommodation + Description>(entity: &mut T, guest: &str) {
+    entity.book(guest, 1);
+}
+
 fn main() {
     implementing_trait();
     traits_for_function_parameter_constraints();
