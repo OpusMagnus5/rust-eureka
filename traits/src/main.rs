@@ -5,7 +5,9 @@ use std::collections::HashMap;
 */
 
 trait Accommodation {
-    fn get_description(&self) -> String;
+    fn get_description(&self) -> String {
+        String::from("A wonderful place to stay!")
+    }
     fn book(&mut self, name: &str, nights: u32);
 }
 
