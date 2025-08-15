@@ -70,8 +70,52 @@ fn trait_must_be_in_scope_to_use_its_definitions() {
     let numeric_count = u64::from_str("5"); // std::str::FromStr
 }
 
+/* ============================================================================================== */
+
+/*
+ Associated constant jest to stała zadeklarowana w trait;
+*/
+
+trait Taxable {
+    const TAX_RATE: f64 = 0.25;
+    
+    fn tax_bill(&self) -> f64;
+}
+
+#[derive(Debug)]
+struct Income {
+    amount: f64
+}
+
+impl Taxable for Income {
+    fn tax_bill(&self) -> f64 {
+        self.amount * Self::TAX_RATE // sięganie po constant
+    }
+}
+
+#[derive(Debug)]
+struct Bonus {
+    amount: f64
+}
+
+impl Taxable for Bonus {
+    const TAX_RATE: f64 = 0.50; // możemy nadpisywać stałe w implementacjach
+    
+    fn tax_bill(&self) -> f64 {
+        self.amount * Self::TAX_RATE // sięganie po constant
+    }
+}
+
+fn associated_constants_in_trait() {
+    let income = Income { amount: 50000.50 };
+    println!("Total tax owed: ${:.2}", income.tax_bill());
+    
+    let bonus = Bonus { amount: 10000.23 };
+    println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
+}
+
 fn main() {
-    trait_object();
+    associated_constants_in_trait();
 }
 
 
