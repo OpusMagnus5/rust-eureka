@@ -80,12 +80,24 @@ fn implementing_trait() {
     println!("{}", airbnb.get_description());
     airbnb.book("Piers", 3);
     println!("{airbnb:#?}")
-    
-    
+}
+
+/* ============================================================================================== */
+
+fn book_for_one_night(entity: &mut impl Accommodation, guest: &str) {
+    entity.book(guest, 1);
+}
+
+fn traits_for_function_parameter_constraints() {
+    let mut hotel = Hotel::new("The Luxe");
+    hotel.book("Piers", 5);
+    book_for_one_night(&mut hotel, "Damian");
+    println!("{hotel:#?}");
 }
 
 fn main() {
     implementing_trait();
+    traits_for_function_parameter_constraints();
 }
 
 
