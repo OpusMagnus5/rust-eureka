@@ -76,19 +76,11 @@ fn trait_must_be_in_scope_to_use_its_definitions() {
  Associated constant jest to stała zadeklarowana w trait;
 */
 
-trait Taxable {
+trait Taxable: Investment { // rozszerzenie Investment - jak dziedziczenie
     const TAX_RATE: f64 = 0.25;
-
-    fn amount(&self) -> f64; // dodajemy getera żeby zrobić default implementacje tax_bill
-    
-    fn set_amount(&mut self, new_amount: f64); // dodajemy setera żeby zrobić default implementacje double_amount
     
     fn tax_bill(&self) -> f64 {
         self.amount() * Self::TAX_RATE // sięganie po constant
-    }
-    
-    fn double_amount(&mut self) {
-        self.set_amount(self.amount() * 2.0)
     }
 }
 
@@ -97,7 +89,7 @@ struct Income {
     amount: f64
 }
 
-impl Taxable for Income {
+impl Investment for Income {
     fn amount(&self) -> f64 {
         self.amount
     }
@@ -107,14 +99,14 @@ impl Taxable for Income {
     }
 }
 
+impl Taxable for Income { }
+
 #[derive(Debug)]
 struct Bonus {
     value: f64
 }
 
-impl Taxable for Bonus {
-    const TAX_RATE: f64 = 0.50; // możemy nadpisywać stałe w implementacjach
-
+impl Investment for Bonus {
     fn amount(&self) -> f64 {
         self.value
     }
@@ -122,6 +114,10 @@ impl Taxable for Bonus {
     fn set_amount(&mut self, new_amount: f64) {
         self.value = new_amount;
     }
+}
+
+impl Taxable for Bonus {
+    const TAX_RATE: f64 = 0.50; // możemy nadpisywać stałe w implementacjach
 }
 
 fn associated_constants_in_trait() {
@@ -134,10 +130,36 @@ fn associated_constants_in_trait() {
     println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
     bonus.double_amount();
     println!("Bonus tax owed: ${:.2}", bonus.tax_bill());
+    
+    let weekend = QualityTime { minutes: 120.0 };
+    println!("Relaxation time: ${:.2}", weekend.amount());
+    
 }
 
 /* ============================================================================================== */
 
+trait Investment {
+    fn double_amount(&mut self) {
+        self.set_amount(self.amount() * 2.0)
+    }
+    fn amount(&self) -> f64; // dodajemy getera żeby zrobić default implementacje tax_bill
+
+    fn set_amount(&mut self, new_amount: f64); // dodajemy setera żeby zrobić default implementacje double_amount
+}
+
+struct QualityTime {
+    minutes: f64
+}
+
+impl Investment for QualityTime {
+    fn amount(&self) -> f64 {
+        self.minutes
+    }
+
+    fn set_amount(&mut self, new_amount: f64) {
+        self.minutes = new_amount
+    }
+}
 
 fn main() {
     associated_constants_in_trait();
