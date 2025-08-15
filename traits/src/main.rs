@@ -165,11 +165,11 @@ fn mix_and_match_5<T, U>(
 
 fn choose_best_place_to_stay() -> impl Accommodation + Description {
     Hotel::new("The Lux")
-    
+
     /* nie możemy zwracać różnych typów implementacji na podstawie logiki
     if true {
         Hotel::new("The Lux")
-    } else { 
+    } else {
         AirBnB::new("AirBnB")
     }*/
 }
@@ -179,18 +179,34 @@ fn choose_best_place_to_stay() -> impl Accommodation + Description {
 fn trait_bounds_to_conditionally_implement_methods() {
     let hotel1 = Hotel::new(String::from("The Lux"));
     println!("{}", hotel1.summarize());
-    
+
     let hotel2 = Hotel::new("The Golden Standards");
     println!("{}", hotel2.summarize());
-    
+
     let hotel3 = Hotel::new(vec!["The", "Sweet", "Escape"]);
     // println!("{}", hotel3.summarize()); nie zadziała bo vec nie implementuje Display
 }
 
+/* ============================================================================================== */
+
+fn trait_object() {
+    let hotel = Hotel::new("The Luxe");
+    let airbnb = AirBnB::new("Peter");
+    
+    //let stays = vec![hotel, airbnb]; nie zadziała bo tą różne typy mimo wspólnego interfejsu
+    //let stays: Vec<impl Description> = vec![hotel, airbnb]; to też nie zadziała
+    
+    /*
+      dyn - oznacza że typy będą runtime inwestygowane, będzie to również wolniejsze działanie
+      bo nie zostanie zoptymalizowane przez kompilator
+      dynamic dispatch współpracuje jedynie z referencjami
+    */
+    let stays: Vec<&dyn Description> = vec![&hotel, &airbnb]; 
+    println!("{}", stays[0].get_description());
+}
+
 fn main() {
-    implementing_trait();
-    traits_for_function_parameter_constraints();
-    trait_bounds_to_conditionally_implement_methods();
+    trait_object();
 }
 
 
