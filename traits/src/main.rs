@@ -159,6 +159,19 @@ fn mix_and_match_5<T, U>(
     second.book(guest, 2);
 }
 
+/* ============================================================================================== */
+
+fn choose_best_place_to_stay() -> impl Accommodation + Description {
+    Hotel::new("The Lux")
+    
+    /* nie możemy zwracać różnych typów implementacji na podstawie logiki
+    if true {
+        Hotel::new("The Lux")
+    } else { 
+        AirBnB::new("AirBnB")
+    }*/
+}
+
 fn main() {
     implementing_trait();
     traits_for_function_parameter_constraints();
