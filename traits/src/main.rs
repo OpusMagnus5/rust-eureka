@@ -192,17 +192,33 @@ fn trait_bounds_to_conditionally_implement_methods() {
 fn trait_object() {
     let hotel = Hotel::new("The Luxe");
     let airbnb = AirBnB::new("Peter");
-    
+
     //let stays = vec![hotel, airbnb]; nie zadziała bo tą różne typy mimo wspólnego interfejsu
     //let stays: Vec<impl Description> = vec![hotel, airbnb]; to też nie zadziała
-    
+
     /*
       dyn - oznacza że typy będą runtime inwestygowane, będzie to również wolniejsze działanie
       bo nie zostanie zoptymalizowane przez kompilator
       dynamic dispatch współpracuje jedynie z referencjami
     */
-    let stays: Vec<&dyn Description> = vec![&hotel, &airbnb]; 
+    let stays: Vec<&dyn Description> = vec![&hotel, &airbnb];
     println!("{}", stays[0].get_description());
+}
+
+/* ============================================================================================== */
+
+/*
+ Jeśli używamy jakiejś metody z traita musimy zaimportować trait do obecnego pliku
+*/
+
+use std::ops::Add;
+use std::str::FromStr;
+fn trait_must_be_in_scope_to_use_its_definitions() {
+    let a = 5;
+    let b = 10;
+    let sum = a.add(b); // std::ops::Add
+    
+    let numeric_count = u64::from_str("5"); // std::str::FromStr
 }
 
 fn main() {
