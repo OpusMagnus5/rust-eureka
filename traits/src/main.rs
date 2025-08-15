@@ -9,6 +9,8 @@ trait Accommodation {
     fn book(&mut self, name: &str, nights: u32);
 }
 
+/* ============================================================================================== */
+
 #[derive(Debug)]
 struct Hotel {
     name: String,
@@ -35,6 +37,82 @@ impl Accommodation for Hotel {
     }
 }
 
-fn main() {
+/* ============================================================================================== */
+
+#[derive(Debug)]
+struct AirBnB {
+    host: String,
+    guest: Vec<(String, u32)>
+}
+
+impl AirBnB {
+    fn new(host: &str) -> AirBnB {
+        Self {
+            host: host.to_string(),
+            guest: vec![]
+        }
+    }
+}
+
+impl Accommodation for AirBnB {
+    fn get_description(&self) -> String {
+        format!("Please enjoy {}'s apartment", self.host)
+    }
+
+    fn book(&mut self, name: &str, nights: u32) {
+        self.guest.push((name.to_string(), nights));
+    }
+}
+
+fn implementing_trait() {
+    let mut hotel = Hotel::new("The Luxe");
+    println!("{}", hotel.get_description());
+    hotel.book("Piers", 5);
+    println!("{hotel:#?}");
+    
+    let mut airbnb = AirBnB::new("Peter");
+    println!("{}", airbnb.get_description());
+    airbnb.book("Piers", 3);
+    println!("{airbnb:#?}")
+    
     
 }
+
+fn main() {
+    implementing_trait();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
