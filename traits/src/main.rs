@@ -1,65 +1,4 @@
-use std::collections::HashMap;
-use std::fmt::Display;
-/*
- Train jest interfejsem jak w Java. Definiuje metody jakie trzeba zaimplementować aby spełnić kontrakt.
-*/
-
-trait Accommodation {
-    fn book(&mut self, name: &str, nights: u32);
-}
-
-/* ============================================================================================== */
-
-#[derive(Debug)]
-struct Hotel<T> {
-    name: T,
-    reservations: HashMap<String, u32>
-}
-
-impl<T> Hotel<T> {
-    fn new(name: T) -> Self {
-        Self {
-            name,
-            reservations: HashMap::new()
-        }
-    }
-}
-
-impl<T: Display> Hotel<T> {
-    fn summarize(&self) -> String {
-        format!("{}: {}", self.name, self.get_description())
-    }
-}
-
-// implementacja dla Hotel
-impl<T> Accommodation for Hotel<T> {
-    fn book(&mut self, name: &str, nights: u32) {
-        self.reservations.insert(name.to_string(), nights);
-    }
-}
-
-/* ============================================================================================== */
-
-#[derive(Debug)]
-struct AirBnB {
-    host: String,
-    guest: Vec<(String, u32)>
-}
-
-impl AirBnB {
-    fn new(host: &str) -> AirBnB {
-        Self {
-            host: host.to_string(),
-            guest: vec![]
-        }
-    }
-}
-
-impl Accommodation for AirBnB {
-    fn book(&mut self, name: &str, nights: u32) {
-        self.guest.push((name.to_string(), nights));
-    }
-}
+use traits::{ Hotel, AirBnB, Accommodation, Description };
 
 fn implementing_trait() {
     let mut hotel = Hotel::new("The Luxe");
@@ -111,24 +50,6 @@ fn mix_and_match_3<T: Accommodation, U: Accommodation>(first: &mut T, second: &m
 }
 
 /* ============================================================================================== */
-
-trait Description {
-    fn get_description(&self) -> String {
-        String::from("A wonderful place to stay!")
-    }
-}
-
-impl<T:  Display> Description for Hotel<T> {
-    fn get_description(&self) -> String {
-        format!("{} is the pinnacle of the luxury", self.name)
-    }
-}
-
-impl Description for AirBnB {
-    fn get_description(&self) -> String {
-        format!("Please enjoy {}'s apartment", self.host)
-    }
-}
 
 fn mix_and_match_4(
     first: &mut (impl Accommodation + Description), // musi również wspierać Description
