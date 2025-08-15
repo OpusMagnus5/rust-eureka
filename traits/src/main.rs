@@ -95,6 +95,30 @@ fn traits_for_function_parameter_constraints() {
     println!("{hotel:#?}");
 }
 
+/* ============================================================================================== */
+
+fn book_for_one_night_2<T: Accommodation>(entity: &mut T, guest: &str) {
+    entity.book(guest, 1);
+}
+
+// tu możemy przekazać dwie różne implementacje Accommodation
+fn mix_and_match(first: &mut impl Accommodation, second: &mut impl Accommodation, guest: &str) {
+    first.book(guest, 1);
+    second.book(guest, 2);
+}
+
+// tutaj muszą być to dwie takie same implementacje Accommodation
+fn mix_and_match_2<T: Accommodation>(first: &mut T, second: &mut T, guest: &str) {
+    first.book(guest, 1);
+    second.book(guest, 2);
+}
+
+// a tu wspieramy dwa rożne typy Accommodation
+fn mix_and_match_3<T: Accommodation, U: Accommodation>(first: &mut T, second: &mut U, guest: &str) {
+    first.book(guest, 1);
+    second.book(guest, 2);
+}
+
 fn main() {
     implementing_trait();
     traits_for_function_parameter_constraints();
