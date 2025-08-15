@@ -5,9 +5,6 @@ use std::collections::HashMap;
 */
 
 trait Accommodation {
-    fn get_description(&self) -> String {
-        String::from("A wonderful place to stay!")
-    }
     fn book(&mut self, name: &str, nights: u32);
 }
 
@@ -34,10 +31,6 @@ impl Hotel {
 
 // implementacja dla Hotel
 impl Accommodation for Hotel {
-    fn get_description(&self) -> String {
-        format!("{} is the pinnacle of the luxury", self.name)
-    }
-
     fn book(&mut self, name: &str, nights: u32) {
         self.reservations.insert(name.to_string(), nights);
     }
@@ -61,10 +54,6 @@ impl AirBnB {
 }
 
 impl Accommodation for AirBnB {
-    fn get_description(&self) -> String {
-        format!("Please enjoy {}'s apartment", self.host)
-    }
-
     fn book(&mut self, name: &str, nights: u32) {
         self.guest.push((name.to_string(), nights));
     }
@@ -151,6 +140,23 @@ fn mix_and_match_4(
 // przykład z generics
 fn book_for_one_night_3<T: Accommodation + Description>(entity: &mut T, guest: &str) {
     entity.book(guest, 1);
+}
+
+/* ============================================================================================== */
+
+/*
+ za where możemy zdefiniować generyki zamiast w < >
+*/
+fn mix_and_match_5<T, U>(
+    first: &mut T, // musi również wspierać Description
+    second: &mut U,
+    guest: &str
+) where
+    T: Accommodation + Description,
+    U: Accommodation
+{
+    first.book(guest, 1);
+    second.book(guest, 2);
 }
 
 fn main() {
