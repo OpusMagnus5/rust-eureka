@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-
+use std::fmt::Display;
 /*
  Train jest interfejsem jak w Java. Definiuje metody jakie trzeba zaimplementować aby spełnić kontrakt.
 */
@@ -11,26 +11,28 @@ trait Accommodation {
 /* ============================================================================================== */
 
 #[derive(Debug)]
-struct Hotel {
-    name: String,
+struct Hotel<T> {
+    name: T,
     reservations: HashMap<String, u32>
 }
 
-impl Hotel {
-    fn new(name: &str) -> Self {
+impl<T> Hotel<T> {
+    fn new(name: T) -> Self {
         Self {
-            name: name.to_string(),
+            name,
             reservations: HashMap::new()
         }
     }
-    
+}
+
+impl<T: Display> Hotel<T> {
     fn summarize(&self) -> String {
         format!("{}: {}", self.name, self.get_description())
     }
 }
 
 // implementacja dla Hotel
-impl Accommodation for Hotel {
+impl<T> Accommodation for Hotel<T> {
     fn book(&mut self, name: &str, nights: u32) {
         self.reservations.insert(name.to_string(), nights);
     }
@@ -116,7 +118,7 @@ trait Description {
     }
 }
 
-impl Description for Hotel {
+impl<T:  Display> Description for Hotel<T> {
     fn get_description(&self) -> String {
         format!("{} is the pinnacle of the luxury", self.name)
     }
@@ -172,9 +174,23 @@ fn choose_best_place_to_stay() -> impl Accommodation + Description {
     }*/
 }
 
+/* ============================================================================================== */
+
+fn trait_bounds_to_conditionally_implement_methods() {
+    let hotel1 = Hotel::new(String::from("The Lux"));
+    println!("{}", hotel1.summarize());
+    
+    let hotel2 = Hotel::new("The Golden Standards");
+    println!("{}", hotel2.summarize());
+    
+    let hotel3 = Hotel::new(vec!["The", "Sweet", "Escape"]);
+    // println!("{}", hotel3.summarize()); nie zadziała bo vec nie implementuje Display
+}
+
 fn main() {
     implementing_trait();
     traits_for_function_parameter_constraints();
+    trait_bounds_to_conditionally_implement_methods();
 }
 
 
